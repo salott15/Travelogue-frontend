@@ -1,0 +1,6 @@
+body{
+    background: 'url("+ ./public/retina_wood.png +")';
+    background-size:contain;
+    background-position:top;
+    background: cover;
+}

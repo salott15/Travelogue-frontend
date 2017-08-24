@@ -1,0 +1,70 @@
+html, body {
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+}
+
+.Main{
+	background-color: white;
+}
+.welcome {
+	background-image: url(./images/travel.jpeg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	width:100%;
+	height:auto;
+	margin: 0px;
+	display: block;
+	height:auto;
+}
+
+.welcome h1 {
+	font-family: 'Cabin Sketch', cursive;
+	font-size: 90px;
+	text-align: center;
+	text-shadow:2px 2px 5px white;
+}
+
+.welcome h2 {
+	font-family: 'Crete Round', serif;
+	font-size: 75px;
+	text-align: center;
+	font-weight: lighter;
+	margin-top:0px;
+	text-shadow:2px 2px 5px white;
+}
+
+h3 {
+	font-family: 'Crete Round', serif;
+	font-size: 50px;
+	margin-left: 50px;
+}
+
+p {
+	font-family: 'Raleway', sans-serif;
+	font-size: 30px;
+	margin-left: 70px;
+}
+
+.about, .features {
+	width:50%;
+	display:inline-block;
+}
+
+img {
+	height:300px;
+	width: 450px;
+	padding-left: 50px;
+	padding-top: 20px;
+}
+
+.start {
+	text-align: center;
+	width:100%;
+	background-color: #99ff99;
+}
+
+.start p {
+	margin-top:0px;
+}

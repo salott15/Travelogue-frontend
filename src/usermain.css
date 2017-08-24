@@ -1,0 +1,35 @@
+html, body {
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+}
+
+h1 {
+	font-family: 'Cabin Sketch', cursive;
+	font-size: 75px;
+}
+
+h2 {
+	font-family: 'Crete Round', serif;
+	font-size: 50px;
+	text-align: center;
+	font-weight: lighter;
+}
+
+.usermap{
+	width:100%;
+	background-color: white;
+}
+
+.options{
+	font-family: 'Raleway', sans-serif;
+	font-size: 35px;
+	float:right;
+	margin-right: 20px;
+	display: inline-block;
+	list-style-type: none;
+}
+
+.bottom {
+	height:50px;
+}
