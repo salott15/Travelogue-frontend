@@ -1,0 +1,27 @@
+.journal {
+	display: inline-block;
+	width:200px;
+	height:300px;
+	border:1px solid;
+	border-radius: 5px;
+	margin-left: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-image: url('./images/linedpaper.png');
+}
+
+.journal h4 {
+	font-size: 20px;
+	font-family: 'Raleway', sans-serif; 
+}
+
+.journal h3 {
+	font-size: 25px;
+	font-family: 'Cabin Sketch', cursive;
+	text-align: center;
+}
+
+.journal p {
+	font-family: 'Raleway', sans-serif; 
+	font-size: 15px;
+}

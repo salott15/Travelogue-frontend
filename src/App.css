@@ -35,13 +35,13 @@ html, body {
 	text-shadow:2px 2px 5px white;
 }
 
-h3 {
+.about h3, .features h3, .start h3 {
 	font-family: 'Crete Round', serif;
 	font-size: 50px;
 	margin-left: 50px;
 }
 
-p {
+.about p, .features p, .start p {
 	font-family: 'Raleway', sans-serif;
 	font-size: 30px;
 	margin-left: 70px;

@@ -1,0 +1,32 @@
+.photo {
+	display: inline-block;
+	width:200px;
+	height:300px;
+	border:1px solid;
+	border-radius: 5px;
+	margin-left: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.photo h4 {
+	font-size: 20px;
+	font-family: 'Raleway', sans-serif; 
+}
+
+.photo h3 {
+	font-size: 25px;
+	font-family: 'Cabin Sketch', cursive;
+	text-align: center;
+}
+
+.photo p {
+	font-family: 'Raleway', sans-serif; 
+	font-size: 15px;
+}
+
+.phimg img {
+	height:75px;
+	width:150px;
+	size: contain;
+}

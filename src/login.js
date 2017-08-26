@@ -1,4 +1,5 @@
 import React from 'react';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import './login.css';
 
 import NavBar from './nav-bar.js';
@@ -6,6 +7,7 @@ import NavBar from './nav-bar.js';
 export default class Login extends React.Component {
   render() {
   	return(
+  		<Router>
   		<div>
   		<h1>TRAVELOGUE</h1>
 
@@ -18,9 +20,10 @@ export default class Login extends React.Component {
 				<input type="text" name="password"/>
 			</form><br/>
 			<br/>
-			<button>Let's go!</button>
+			<button><Link to="/usermain" style={{textDecoration: 'none', color: "white"}}>Let's go!</Link></button>
 		</div>
 		</div>
+		</Router>
   		);
   };
  }

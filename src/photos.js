@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './journals.css';
+import './photos.css';
 
-import JournalElement from './jelement';
+import PhotoElement from './phelement';
 
-export default class Journals extends Component {
+export default class Photos extends Component {
   render() {
   	return(
   		<div>
@@ -11,7 +11,7 @@ export default class Journals extends Component {
 
 			<div className="board">
 				<h2>Sari's Journals</h2>
-				<JournalElement />
+				<PhotoElement />
 				
 			</div>
 

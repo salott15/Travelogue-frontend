@@ -15,7 +15,7 @@ export default class UserMain extends Component {
   				<h2>Sari's Map</h2>
   				<Map />
   				<ul className="options">
-		    		<li><Link to="/journals" style={{textDecoration: 'none', color: "white"}}>Journals</Link></li>
+		    		<li><Link to="/journals" style={{textDecoration: 'none', color: "black"}}>Journals</Link></li>
     				<li>Photos</li>
 		    		<li>Places</li>
 		  		</ul>

@@ -8,6 +8,7 @@ import Journals from './journals';
 import Login from './login';
 import StatePage from './statepage';
 import UserMain from './usermain';
+import Photos from './photos.js';
 
 export default function NavBar(props){
 		return (
@@ -26,6 +27,7 @@ export default function NavBar(props){
 						<Route exact path="/login" component={Login} />
 						<Route exact path="/statepage" component={StatePage} />
 						<Route exact path="/usermain" component={UserMain} />
+						<Route exact path="/photos" component={Photos} />
 					</main>
 				</div>
 			</Router>
