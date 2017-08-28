@@ -2,12 +2,10 @@ import React, { Component } from 'react';
 import * as d3 from "d3";
 import uStatePaths from './assets/uStates';
 import './map.css';
-console.log(d3);
 
 export class Map extends React.Component {
 
 	componentDidMount(){
-			console.log(d3);
 		function tooltipHtml(n, d){	/* function to create html content string in tooltip div. */
 				return "<h4>"+n+"</h4>";
 			}
@@ -19,11 +17,10 @@ export class Map extends React.Component {
 			"WI", "MO", "AR", "OK", "KS", "LS", "VA"]
 				.forEach(function(d){ 
 					var low=Math.round(100*Math.random());
-					sampleData[d]={color:d3.interpolate("#ccffe6", "#000099")(low/100)}; 
+					sampleData[d]={color:d3.interpolate("#66ff99", "#000099")(low/100)}; 
 				});
 			
-			 //draw states on id #statesvg
-			 console.log(uStatePaths); 
+			 //draw states on id #statesvg 
 
 			 var uStates= {};	
 			uStates.draw = function(id, data, toolTip){		
@@ -38,11 +35,17 @@ export class Map extends React.Component {
 		function mouseOut(){
 			d3.select("#tooltip").transition().duration(500).style("opacity", 0);      
 		}
+
+		function spRedirect(d){
+			d3.select("#tooltip").html(toolTip(d.n, data[d.n])) 
+			localStorage.setItem("state", d.n)
+			window.location = "/statepage"
+		}
 		
 		d3.select(id).selectAll(".state")
 			.data(uStatePaths).enter().append("path").attr("class","state").attr("d",function(d){ return d.d;})
 			.style("fill",function(d){ console.log(data, data[d.id]); return data[d.id].color; })
-			.on("mouseover", mouseOver).on("mouseout", mouseOut);
+			.on("mouseover", mouseOver).on("mouseout", mouseOut).on("click", spRedirect);
 	}
 			uStates.draw("#statesvg", sampleData, tooltipHtml);
 			

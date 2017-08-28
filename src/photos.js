@@ -9,8 +9,8 @@ export default class Photos extends Component {
   		<div>
   			<h1>TRAVELOGUE</h1>
 
-			<div className="board">
-				<h2>Sari's Journals</h2>
+			<div className="photoboard">
+				<h2>Sari's Photos</h2>
 				<PhotoElement />
 				
 			</div>

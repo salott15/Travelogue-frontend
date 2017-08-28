@@ -18,9 +18,9 @@ export default class App extends Component {
         <h3>Keep all your travel in one place.</h3>
         <p>Use Travelogue to organize your travel memories by state.</p>
       </div>
-      <img src="/about.jpeg"/>
+      <img src="/about.jpeg" className="aboutimg" />
       
-      <img src="/features.jpeg"/>
+      <img src="/features.jpeg" className="featuresimg"/>
       
       <div className="features">
         <h3>Store what's important.</h3>

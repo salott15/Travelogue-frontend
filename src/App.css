@@ -52,7 +52,7 @@ html, body {
 	display:inline-block;
 }
 
-img {
+.aboutimg, .featuresimg {
 	height:300px;
 	width: 450px;
 	padding-left: 50px;

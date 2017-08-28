@@ -1,4 +1,4 @@
-.photo {
+.place {
 	display: inline-block;
 	width:200px;
 	height:300px;
@@ -9,24 +9,18 @@
 	padding-right: 10px;
 }
 
-.photo h4 {
+.place h4 {
 	font-size: 20px;
 	font-family: 'Raleway', sans-serif; 
 }
 
-.photo h3 {
+.place h3 {
 	font-size: 25px;
 	font-family: 'Cabin Sketch', cursive;
 	text-align: center;
 }
 
-.photo p {
+.place p {
 	font-family: 'Raleway', sans-serif; 
 	font-size: 15px;
-}
-
-.phimg {
-	width:150px;
-	height: auto;
-	margin: auto;
 }

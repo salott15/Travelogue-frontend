@@ -16,8 +16,8 @@ export default class UserMain extends Component {
   				<Map />
   				<ul className="options">
 		    		<li><Link to="/journals" style={{textDecoration: 'none', color: "black"}}>Journals</Link></li>
-    				<li>Photos</li>
-		    		<li>Places</li>
+    				<li><Link to="/photos" style={{textDecoration: 'none', color: "black"}}>Photos</Link></li>
+		    		<li><Link to="/places" style={{textDecoration: 'none', color: "black"}}>Places</Link></li>
 		  		</ul>
 			</div>
 			<div className='bottom'></div>

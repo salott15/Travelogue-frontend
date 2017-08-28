@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import './statepage.css';
 
 export default class StatePage extends Component {
+			
+
   render() {
+  	var State = localStorage.getItem("state");
   	return(
   		<div>
   		<h1>TRAVELOGUE</h1>
 
 		<div className="board">
-			<h2>Oregon</h2>
+			<h2>{State}</h2>
 			<img src="./images/oregon.png" className="state"/>
 			<div className="journal">
 				<h3>Oregon</h3>
