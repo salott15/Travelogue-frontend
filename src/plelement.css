@@ -24,3 +24,9 @@
 	font-family: 'Raleway', sans-serif; 
 	font-size: 15px;
 }
+
+.place button {
+	width:150px;
+	font-size: 25px;
+	margin-left: 25px;
+}

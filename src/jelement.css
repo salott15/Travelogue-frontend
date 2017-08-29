@@ -25,3 +25,9 @@
 	font-family: 'Raleway', sans-serif; 
 	font-size: 15px;
 }
+
+.journal button {
+	width:200px;
+	font-size: 25px;
+	margin-left: 25px;
+}

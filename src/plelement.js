@@ -10,6 +10,7 @@ export default class PlaceElement extends Component {
 			<h4>August 15, 2017</h4>
 			<h4>Rogue Brewery</h4>
 			<p>Blah Blah Blah review.</p>
+			<button>Delete Place</button>
 		</div>
 		</div>
 		);

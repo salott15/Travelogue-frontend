@@ -16,6 +16,24 @@ h2 {
 	font-weight: lighter;
 }
 
+.addjournal h3 {
+	font-family: 'Crete Round', serif;
+	font-size: 35px;
+	text-align: center;
+	font-weight: lighter;
+	color: white;
+	padding-top: 50px;
+}
+
+.addjournal {
+	width:200px;
+	height:200px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	background-color: black;
+	margin: auto;
+}
+
 .board {
 	width:100%;
 	background-color: white;
