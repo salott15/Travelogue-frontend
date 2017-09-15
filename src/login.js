@@ -7,9 +7,9 @@ import {login} from './redux/users/useractions'
 import NavBar from './nav-bar.js';
 
 class Login extends React.Component {
-	constructor(props) { 
-		super(props); 
-		console.log('Props:', props); 
+	constructor(props) {
+		super(props);
+		console.log('Props:', props);
 	}
 
   render() {
@@ -39,17 +39,18 @@ class Login extends React.Component {
  }
 
 const mapStateToProps = (state, ownProps) => {
+	console.log('state is:',state);
 	return {}
 };
 
- const mapDispatchToProps = (dispatch) => { 
- 	return { 
- 		login: (e) => { 
+ const mapDispatchToProps = (dispatch) => {
+ 	return {
+ 		login: (e) => {
  			e.preventDefault();
  			console.log(e)
- 			dispatch(login({username: "abc@abc.com", password:"abc"})); 
+ 			dispatch(login({username: "abc@abc.com", password:"abc"}));
  		}
- 	} 
+ 	}
  }
 
  export default connect( mapStateToProps, mapDispatchToProps )(Login);
