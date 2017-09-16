@@ -39,8 +39,10 @@ class Login extends React.Component {
  }
 
 const mapStateToProps = (state, ownProps) => {
-	console.log('state is:',state);
-	return {}
+	console.log('state is:',state, ownProps);
+	return {
+		loggedIn: state._root.entries[0][1].loggedIn
+	}
 };
 
  const mapDispatchToProps = (dispatch) => {
