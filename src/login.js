@@ -50,7 +50,7 @@ const mapStateToProps = (state, ownProps) => {
  		login: (e) => {
  			e.preventDefault();
  			console.log(e)
- 			dispatch(login({username: "abc@abc.com", password:"abc"}));
+ 			login({username: "a@b.c", password:"a"},dispatch);
  		}
  	}
  }
