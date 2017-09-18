@@ -26,9 +26,9 @@ class Login extends React.Component {
 			<h2>Login</h2>
 			<form onSubmit={this.props.login}>
 				<label>Email</label>
-				<input type="email" name="email"/>
+				<input id="login-email" type="email" name="email"/>
 				<label>Password</label>
-				<input type="text" name="password"/><br/> <br/>
+				<input id="login-password" type="text" name="password"/><br/> <br/>
 				<button>Lets go!</button>
 			</form>
 		</div>
@@ -49,8 +49,10 @@ const mapStateToProps = (state, ownProps) => {
  	return {
  		login: (e) => {
  			e.preventDefault();
- 			console.log(e)
- 			login({username: "a@b.c", password:"a"},dispatch);
+ 		// 	console.log('e',document.getElementById('login-email').value, document.getElementById('login-password').value)
+			let usrName = document.getElementById('login-email').value,
+					pw = document.getElementById('login-password').value;
+ 			login({username: usrName, password:pw},dispatch);
  		}
  	}
  }
