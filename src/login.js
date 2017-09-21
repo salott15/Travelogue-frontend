@@ -2,7 +2,7 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import './login.css';
-import {login} from './redux/users/useractions'
+import {login, testAuth} from './redux/users/useractions'
 
 import NavBar from './nav-bar.js';
 
@@ -31,6 +31,7 @@ class Login extends React.Component {
 				<input id="login-password" type="text" name="password"/><br/> <br/>
 				<button>Lets go!</button>
 			</form>
+			<button onClick={this.props.testAuth}>Click</button>
 		</div>
 		</div>
 		</Router>
@@ -53,7 +54,8 @@ const mapStateToProps = (state, ownProps) => {
 			let usrName = document.getElementById('login-email').value,
 					pw = document.getElementById('login-password').value;
  			login({username: usrName, password:pw},dispatch);
- 		}
+ 		},
+		testAuth: (e) =>{ testAuth(dispatch); }
  	}
  }
 
