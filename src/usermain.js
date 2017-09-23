@@ -10,19 +10,22 @@ class UserMain extends Component {
   {
     super(props);
     console.log(props);
+    //._root.entries["0"][1].loggedIn
   }
+  componentDidMount(props)
+  { console.log('new props: ', props); }
+
   render() {
+    console.log('?????',this.props);
     const loggedIn = (this.props.loggedIn) ? 'tru' : 'nadda'
-    if(!this.props.loggedIn){
+    if(!this.props.usrLoggedIn){
       // window.location = '/login';
       return (<div>Not Logged In</div>)
     }
     return (
-    	<Router>
     	<div>
       <h3>{loggedIn}</h3>
     		<h1>TRAVELOGUE</h1>
-
 			<div className="usermap">
   				<h2>Sari's Map</h2>
   				<Map />
@@ -33,14 +36,15 @@ class UserMain extends Component {
 			</div>
 			<div className='bottom'></div>
 		</div>
-		</Router>
 		);
 };
 }
 
 const mapStateToProps = (state, ownProps) => {
 	console.log('state is:',state, ownProps);
-	return { }
+	return {
+    usrLoggedIn:state._root.entries["0"][1].loggedIn
+  }
 };
 
  const mapDispatchToProps = (dispatch) => {

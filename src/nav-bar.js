@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import { Route, Link} from 'react-router-dom';
 import './nav-bar.css';
 
 import App from './App';
@@ -14,26 +14,24 @@ import NewPlace from './newplace.js';
 
 export default function NavBar(props){
 		return (
-			<Router>
-				<div>
+			<div>
 
-					<header className="nav-bar">
-						<p className="title"><Link to="/" style={{textDecoration: 'none', color: "white"}}>TRAVELOGUE</Link></p>
-						<p className="login"><Link to="/login" style={{textDecoration: 'none', color: "white"}}>Login</Link></p>
-					</header>
+				<header className="nav-bar">
+					<p className="title"><Link to="/" style={{textDecoration: 'none', color: "white"}}>TRAVELOGUE</Link></p>
+					<p className="login"><Link to="/login" style={{textDecoration: 'none', color: "white"}}>Login</Link></p>
+				</header>
 
-					<main>
-						<Route exact path="/" component={App} />
-						<Route exact path="/createaccount" component={CreateAccount} />
-						<Route exact path="/journals" component={Journals} />
-						<Route exact path="/login" component={Login} />
-						<Route exact path="/statepage" component={StatePage} />
-						<Route exact path="/usermain" component={UserMain} />
-						<Route exact path="/places" component={Places} />
-						<Route exact path="/newjournal" component={NewJournal} />
-						<Route exact path="/newplace" component={NewPlace} />
-					</main>
-				</div>
-			</Router>
+				<main>
+					<Route exact path="/" component={App} />
+					<Route exact path="/createaccount" component={CreateAccount} />
+					<Route exact path="/journals" component={Journals} />
+					<Route exact path="/login" component={Login} />
+					<Route exact path="/statepage" component={StatePage} />
+					<Route exact path="/usermain" component={UserMain} />
+					<Route exact path="/places" component={Places} />
+					<Route exact path="/newjournal" component={NewJournal} />
+					<Route exact path="/newplace" component={NewPlace} />
+				</main>
+			</div>
 		);
 }

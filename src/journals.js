@@ -7,7 +7,6 @@ import JournalElement from './jelement';
 export default class Journals extends Component {
   render() {
   	return(
-  		<Router>
   		<div>
   			<h1>TRAVELOGUE</h1>
 
@@ -17,12 +16,11 @@ export default class Journals extends Component {
 				<div className="addjournal"><Link to="/newjournal" style={{textDecoration: 'none'}}>
 					<h3>Add a new journal!</h3></Link>
 				</div>
-				
+
 			</div>
 
 			<div className="bottom"></div>
 		</div>
-		</Router>
   		);
   	};
   }

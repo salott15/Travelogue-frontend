@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import './login.css';
 import {login, testAuth} from './redux/users/useractions'
 
-import NavBar from './nav-bar.js';
-
 class Login extends React.Component {
 	constructor(props) {
 		super(props);
@@ -16,25 +14,25 @@ class Login extends React.Component {
   	console.log(this.props)
   	const loggedIn = (this.props.loggedIn) ? 'tru' : 'nadda'
   	return(
-  		<Router>
   		<div>
-  		<h1>TRAVELOGUE</h1>
+				<h1>TRAVELOGUE</h1>
 
-  		{loggedIn}
+				{loggedIn}
 
-		<div className="loginform">
-			<h2>Login</h2>
-			<form onSubmit={this.props.login}>
-				<label>Email</label>
-				<input id="login-email" type="email" name="email"/>
-				<label>Password</label>
-				<input id="login-password" type="text" name="password"/><br/> <br/>
-				<button>Lets go!</button>
-			</form>
-			<button onClick={this.props.testAuth}>Click</button>
+				<div className="loginform">
+				<h2>Login</h2>
+				<form onSubmit={this.props.login}>
+					<label>Email</label>
+					<input id="login-email" type="email" name="email"/>
+					<label>Password</label>
+					<input id="login-password" type="text" name="password"/><br/> <br/>
+					<button>Lets go!</button>
+					<br/>
+				</form>
+				<button onClick={this.props.testAuth}>Click</button>
+			</div>
+			<p><Link to={"/usermain"} style={{color: "red"}}>TRAVELOGUE</Link></p>
 		</div>
-		</div>
-		</Router>
   		);
   };
  }
