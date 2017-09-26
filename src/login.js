@@ -38,6 +38,7 @@ class Login extends React.Component {
  }
 
 const mapStateToProps = (state, ownProps) => {
+	//var href = this.context.router.history.createHref(typeof to === 'string' ? { pathname: to } : to);
 	console.log('state is:',state, ownProps);
 	return {
 		loggedIn: state._root.entries[0][1].loggedIn

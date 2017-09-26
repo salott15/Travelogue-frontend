@@ -12,13 +12,20 @@ export function login(obj,dispatch) {
 		},
 		body: data
 	})
-	.then(res => res.json())
 	.then(obj => {
-		//getAuthToken(data,dispatch);
-		dispatch(loginComplete(obj),dispatch);
-		// setTimeout(function(){ window.location = '/usermain' },200);
+		fetch('http://localhost:3000/api/auth/authtoken',
+		{
+			method: "GET"
+		})
+		.then(res => res.json())
+		.then(obj =>{
+			console.log('OBJOBJ:',obj);
+			localStorage.setItem('token',obj.tkn);
+			return dispatch(loginComplete(obj),dispatch);
+		})
 	});
-}
+};
+
 function loginComplete(obj){
 	console.log('completed:',obj);
 	return { type: 'LOGIN_USER', paylod:obj };
@@ -30,12 +37,12 @@ export function testAuth(dispatch)
 	{
 		method: "GET",
 		headers: {
-			"Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjU5YmNiZjU2N2FmNTE3MGI5N2NhNzk5NiIsImVtYWlsIjoiYUBiLmMiLCJwYXNzd29yZCI6IiQyYSQxMCRrVTVZeWJZWVB6bG9hZlJGZkU0ZTVlb1NwZ1BNd242RE1RVlFvbExFODdEUXAwei9UNy81aSIsImZpcnN0bmFtZSI6ImJvYiIsImxhc3RuYW1lIjoiam9uZXMiLCJ1c2VybmFtZSI6ImFAYi5jIiwiX192IjowLCJkYXRlQWRkZWQiOiIyMDE3LTA5LTIxVDIzOjQwOjE2LjMzMloiLCJwbGFjZXNSZWYiOltdLCJqb3VybmFsc1JlZiI6W119LCJpYXQiOjE1MDYwMzcyMTYsImV4cCI6MTUwNjY0MjAxNiwic3ViIjoiYUBiLmMifQ.TS3pVSTQQSH4_lg5VCht9JELwrhke7zjpCCMRwFC8hg"
+			"Authorization": "Bearer " + localStorage.getItem('token')
 		},
 	})
 	.then(res => res.json())
 	.then(obj => {
-		console.log('get places',obj);
+		console.log('get placesx',obj);
 		//dispatch(loginComplete(obj),dispatch);
 	});
 }
