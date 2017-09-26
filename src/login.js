@@ -13,12 +13,31 @@ class Login extends React.Component {
   render() {
   	console.log(this.props)
   	const loggedIn = (this.props.loggedIn) ? 'tru' : 'nadda'
+		if(this.props.loggedIn)
+		{
+			console.log('ran?');
+			return(
+	  		<div>
+					<h1>TRAVELOGUE</h1>
+					<p>You have successfully logged in!</p>
+					<p>Please <Link to={"/usermain"} style={{textDecoration: "underline"}}>view your Travelogue</Link>!</p>
+				</div>
+				);
+			//this.props.history.go('/usermain'); console.log(this.props);
+			// var	el = document.querySelectorAll('.forward-to-page'),
+			//  		evnt = document.createEvent('HTMLEvents');
+			// 		evnt.initEvent('click', true, false);
+			// 		console.log('el',el);
+			// 		if (el[0].onclick) {
+			// 		   el[0].onclick();
+			// 		} else if (el[0].click) {
+			// 		   el[0].click();
+			// 		}
+					// el.dispatchEvent(evnt);
+		}
   	return(
   		<div>
 				<h1>TRAVELOGUE</h1>
-
-				{loggedIn}
-
 				<div className="loginform">
 				<h2>Login</h2>
 				<form onSubmit={this.props.login}>
@@ -29,9 +48,9 @@ class Login extends React.Component {
 					<button>Lets go!</button>
 					<br/>
 				</form>
-				<button onClick={this.props.testAuth}>Click</button>
+				<button style={{display:'none'}} onClick={this.props.testAuth}>Click</button>
 			</div>
-			<p><Link to={"/usermain"} style={{color: "red"}}>TRAVELOGUE</Link></p>
+			<p style={{display:'none'}}><Link className={"forward-to-page"} to={"/usermain"} style={{color: "red"}}>TRAVELOGUE</Link></p>
 		</div>
   		);
   };

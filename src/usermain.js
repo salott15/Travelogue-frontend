@@ -24,7 +24,6 @@ class UserMain extends Component {
     }
     return (
     	<div>
-      <h3>{loggedIn}</h3>
     		<h1>TRAVELOGUE</h1>
 			<div className="usermap">
   				<h2>Sari's Map</h2>
