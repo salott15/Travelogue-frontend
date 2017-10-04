@@ -1,18 +1,31 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import './newjournal.css';
+import {addJournal} from './redux/journals/journalactions';
 
-export default class NewJournal extends Component {
+class NewJournal extends Component {
+	 constructor(props)
+  {
+    super(props);
+    console.log(props);
+    //._root.entries["0"][1].loggedIn
+  }
   render() {
+  	console.log(this.props)
+  	 if(!this.props.usrLoggedIn){
+      // window.location = '/login';
+      return (<div>Not Logged In</div>)
+    }
   	return(
   		<div>
   			<h1>TRAVELOGUE</h1>
 
 			<div className="newjournal">
 				<h2>Create a new journal entry!</h2>
-				<form>
+				<div>
 
 					<label>State</label>
-					<select name="state">
+					<select name="state" id="state">
 					  <option value="Alabama">Alabama</option>
 					  <option value="Alaska">Alaska</option>
 					  <option value="Arizona">Arizona</option>
@@ -66,15 +79,33 @@ export default class NewJournal extends Component {
 					</select>
 		
 					<label>Journal Entry</label>
-					<input type="text" name="journalentry"/>
+					<input type="text" name="journalentry" id="content"/>
+
+				<br/>
+				<br/>
+				<button onClick={this.props.newJournal}>Submit</button>
 	
-				</form>
-				<br/>
-				<br/>
-				<button>Submit</button>
+				</div>
 			</div>
 			<div className="bottom"></div>
 		</div>			
   		);
   	};
 }
+
+const MapStateToProps = function(state, ownProps){
+	return {
+		usrLoggedIn:state._root.entries["0"][1].loggedIn
+	}
+}
+
+const MapDispatchToProps = function(dispatch){
+	return {newJournal: (evt) => {
+		console.log(evt)
+		let state = document.getElementById('state').value,
+			content = document.getElementById('content').value;
+		addJournal({state, content}, dispatch)
+	}}
+}
+
+export default connect(MapStateToProps, MapDispatchToProps)(NewJournal);

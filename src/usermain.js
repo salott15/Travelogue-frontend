@@ -17,7 +17,6 @@ class UserMain extends Component {
 
   render() {
     console.log('?????',this.props);
-    const loggedIn = (this.props.usrLoggedIn) ? 'tru' : 'nadda'
     if(!this.props.usrLoggedIn){
       // window.location = '/login';
       return (<div>Not Logged In</div>)

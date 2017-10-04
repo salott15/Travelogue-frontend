@@ -21,6 +21,7 @@ class Login extends React.Component {
 					<h1>TRAVELOGUE</h1>
 					<p>You have successfully logged in!</p>
 					<p>Please <Link to={"/usermain"} style={{textDecoration: "underline"}}>view your Travelogue</Link>!</p>
+					<p>Please <Link to={"/newjournal"} style={{textDecoration: "underline"}}>view your Journals</Link>!</p>
 				</div>
 				);
 			//this.props.history.go('/usermain'); console.log(this.props);
@@ -50,7 +51,6 @@ class Login extends React.Component {
 				</form>
 				<button style={{display:'none'}} onClick={this.props.testAuth}>Click</button>
 			</div>
-			<p style={{display:'none'}}><Link className={"forward-to-page"} to={"/usermain"} style={{color: "red"}}>TRAVELOGUE</Link></p>
 		</div>
   		);
   };

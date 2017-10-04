@@ -3,7 +3,7 @@
 export function login(obj,dispatch) {
 	let data = JSON.stringify(obj);
 	// console.log(obj.username,obj.password,btoa(obj.username+":"+obj.password));
-	return fetch('http://localhost:3000/api/auth/login',
+	return fetch('http://localhost:3001/api/auth/login',
 	{
 		method: "POST",
 		headers: {
@@ -13,7 +13,7 @@ export function login(obj,dispatch) {
 		body: data
 	})
 	.then(obj => {
-		fetch('http://localhost:3000/api/auth/authtoken',
+		fetch('http://localhost:3001/api/auth/authtoken',
 		{
 			method: "GET"
 		})
@@ -21,6 +21,7 @@ export function login(obj,dispatch) {
 		.then(obj =>{
 			console.log('OBJOBJ:',obj);
 			localStorage.setItem('token',obj.tkn);
+			localStorage.setItem('uid', obj.uid);
 			return dispatch(loginComplete(obj),dispatch);
 		})
 	});
