@@ -1,29 +1,36 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import './statepage.css';
+import {getUserJournalsByState} from './redux/journals/journalactions';
+import JournalElement from './jelement';
 
-export default class StatePage extends Component {
-			
+class StatePage extends Component {
+	
+	componentDidMount(){
+		this.props.getUserJournalsByState()
+	}		
 
   render() {
-  	var State = localStorage.getItem("state");
+  	var State = localStorage.getItem("state"), 
+  	journals = {},
+  	journalsArray = this.props.journals
+  	if(this.props.journals){
+  		//journalsArray = 
+  	 journals = journalsArray.map((jrnl, index) => {
+  		return <JournalElement {...jrnl} key={index} />
+  	})};
   	return(
   		<div>
   		<h1>TRAVELOGUE</h1>
 
 		<div className="board">
 			<h2>{State}</h2>
-			<img src="./images/oregon.png" className="state"/>
+			
 			<div className="journal">
-				<h3>Oregon</h3>
-				<h4>August 15, 2017</h4>
-				<p>We spent the day exploring Cannon Beach on the coast.  We finished with dinner at Pelican Brewery.</p>
-				<a href="/journals">See more journals from Oregon.</a>
+				{journals}
 			</div>
 			<div className="places">
-				<h3>Pelican Brewery</h3>
-				<h4>Cannon Beach</h4>
-				<p>Super cheap burgers made with Tillamook and a really friendly staff!</p>
-				<a href="/places">See more places from Oregon.</a>
+				
 			</div>
 		</div>
 
@@ -32,3 +39,17 @@ export default class StatePage extends Component {
   		);
   	};
   }
+
+
+  const MapStateToProps = function(state, ownProps){
+  	console.log(state);
+	return {journals: state._root.entries[1][1].currentJournals}
+}
+
+const MapDispatchToProps = function(dispatch){
+	return {getUserJournalsByState: () => {
+		getUserJournalsByState(dispatch)
+	}}
+}
+
+export default connect(MapStateToProps, MapDispatchToProps)(StatePage);

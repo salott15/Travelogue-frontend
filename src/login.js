@@ -22,6 +22,7 @@ class Login extends React.Component {
 					<p>You have successfully logged in!</p>
 					<p>Please <Link to={"/usermain"} style={{textDecoration: "underline"}}>view your Travelogue</Link>!</p>
 					<p>Please <Link to={"/newjournal"} style={{textDecoration: "underline"}}>view your Journals</Link>!</p>
+					<p>Please <Link to={"/newplace"} style={{textDecoration: "underline"}}>view your Journals</Link>!</p>
 				</div>
 				);
 			//this.props.history.go('/usermain'); console.log(this.props);

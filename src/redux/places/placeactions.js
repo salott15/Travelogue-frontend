@@ -1,8 +1,8 @@
-export function addJournal(obj,dispatch) {
+export function addPlace(obj,dispatch) {
 	let data = JSON.stringify(obj);
 	console.log(data);
 	// console.log(obj.username,obj.password,btoa(obj.username+":"+obj.password));
-	return fetch('http://localhost:3001/journals/' + localStorage.getItem("uid"),
+	return fetch('http://localhost:3001/places/' + localStorage.getItem("uid"),
 	{
 		method: "POST",
 		headers: {
@@ -12,20 +12,20 @@ export function addJournal(obj,dispatch) {
 		body: data
 	})
 	.then(obj => {
-			return dispatch(addJournalComplete(obj),dispatch);
+			return dispatch(addPlaceComplete(obj),dispatch);
 	});
 };
 
-function addJournalComplete(obj){
+function addPlaceComplete(obj){
 	console.log('completed:',obj);
-	return { type: 'ADD_JOURNAL', paylod:obj };
-};
+	return { type: 'ADD_PLACE', paylod:obj };
+}
 
-export function getUserJournals(obj,dispatch) {
+export function getUserPlaces(obj,dispatch) {
 	let data = JSON.stringify(obj);
 	console.log(data);
 	// console.log(obj.username,obj.password,btoa(obj.username+":"+obj.password));
-	return fetch('http://localhost:3001/journals/' + localStorage.getItem("uid"),
+	return fetch('http://localhost:3001/places/' + localStorage.getItem("uid"),
 	{
 		method: "GET",
 		headers: {
@@ -35,37 +35,43 @@ export function getUserJournals(obj,dispatch) {
 		body: data
 	})
 	.then(obj => {
-			return dispatch(getJournalsComplete(obj),dispatch);
+			return dispatch(getPlacesComplete(obj),dispatch);
 	});
 };
 
-function getJournalsComplete(obj){
+function getPlacesComplete(obj){
 	console.log('completed:',obj);
-	return { type: 'GET_JOURNALS', paylod:obj };
+	return { type: 'GET_PLACES', paylod:obj };
 };
 
-export function getUserJournalsByState(dispatch) {
+export function getUserPlacesByState(obj,dispatch) {
+	let data = JSON.stringify(obj);
+	console.log(data);
 	// console.log(obj.username,obj.password,btoa(obj.username+":"+obj.password));
-	return fetch('http://localhost:3001/journals/' + localStorage.getItem("uid") + "/" + localStorage.getItem("state"),
+	return fetch('http://localhost:3001/places/' + localStorage.getItem("uid") + localStorage.getItem("state"),
 	{
 		method: "GET",
 		headers: {
 			"Content-Type": "application/json",
 			//"Authorization": "Basic "+btoa(obj.username+":"+obj.password)
 		},
+		body: data
 	})
 	.then(obj => {
-		return obj.json()}).then( obj => {
-		console.log(obj)
-			return dispatch({ type: 'GET_JOURNALS_BY_STATE', paylod:obj });
+			return dispatch(getPlacessByStateComplete(obj),dispatch);
 	});
 };
 
-/*export function updateJournal(obj,dispatch) {
+function getPlacessByStateComplete(obj){
+	console.log('completed:',obj);
+	return { type: 'GET_PLACES_BY_STATE', paylod:obj };
+};
+
+/*export function updatePlace(obj,dispatch) {
 	let data = JSON.stringify(obj);
 	console.log(data);
 	// console.log(obj.username,obj.password,btoa(obj.username+":"+obj.password));
-	return fetch('http://localhost:3001/journals/' + localStorage.getItem("jid"),
+	return fetch('http://localhost:3001/places/' + localStorage.getItem("pid"),
 	{
 		method: "PUT",
 		headers: {
@@ -75,20 +81,20 @@ export function getUserJournalsByState(dispatch) {
 		body: data
 	})
 	.then(obj => {
-			return dispatch(updateJournalComplete(obj),dispatch);
+			return dispatch(updatePlaceComplete(obj),dispatch);
 	});
 };
 
-function updateJournalComplete(obj){
+function updatePlaceComplete(obj){
 	console.log('completed:',obj);
-	return { type: 'UPDATE_JOURNAL', paylod:obj };
+	return { type: 'UPDATE_PLACE', paylod:obj };
 };
 
-export function deleteJournal(obj,dispatch) {
+export function deletePlace(obj,dispatch) {
 	let data = JSON.stringify(obj);
 	console.log(data);
 	// console.log(obj.username,obj.password,btoa(obj.username+":"+obj.password));
-	return fetch('http://localhost:3001/journals/' + localStorage.getItem("jid"),
+	return fetch('http://localhost:3001/places/' + localStorage.getItem("pid"),
 	{
 		method: "DELETE",
 		headers: {
@@ -98,11 +104,11 @@ export function deleteJournal(obj,dispatch) {
 		body: data
 	})
 	.then(obj => {
-			return dispatch(deleteJournalComplete(obj),dispatch);
+			return dispatch(deletePlaceComplete(obj),dispatch);
 	});
 };
 
-function deleteJournalComplete(obj){
+function deletePlaceComplete(obj){
 	console.log('completed:',obj);
 	return { type: 'UPDATE_JOURNAL', paylod:obj };
 };*/

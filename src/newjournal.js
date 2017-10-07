@@ -7,15 +7,13 @@ class NewJournal extends Component {
 	 constructor(props)
   {
     super(props);
-    console.log(props);
-    //._root.entries["0"][1].loggedIn
   }
   render() {
   	console.log(this.props)
-  	 if(!this.props.usrLoggedIn){
+  	 /*if(!this.props.usrLoggedIn){
       // window.location = '/login';
       return (<div>Not Logged In</div>)
-    }
+    }*/
   	return(
   		<div>
   			<h1>TRAVELOGUE</h1>
@@ -103,8 +101,8 @@ const MapDispatchToProps = function(dispatch){
 	return {newJournal: (evt) => {
 		console.log(evt)
 		let state = document.getElementById('state').value,
-			content = document.getElementById('content').value;
-		addJournal({state, content}, dispatch)
+			body = document.getElementById('content').value;
+		addJournal({state, body}, dispatch)
 	}}
 }
 

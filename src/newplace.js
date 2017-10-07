@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import './newplace.css';
+import {addPlace} from './redux/places/placeactions';
 
-export default class NewPlace extends Component {
+class NewPlace extends Component {
   render() {
   	return(
   		<div>
@@ -9,10 +11,10 @@ export default class NewPlace extends Component {
 
 			<div className="newplace">
 				<h2>Create a new place entry!</h2>
-				<form>
+				<div>
 
 					<label>State</label>
-					<select name="state">
+					<select name="state" id="state">
 					  <option value="Alabama">Alabama</option>
 					  <option value="Alaska">Alaska</option>
 					  <option value="Arizona">Arizona</option>
@@ -66,18 +68,36 @@ export default class NewPlace extends Component {
 					</select>
 		
 					<label>Place Name</label>
-					<input type="text" name="placename"/>
+					<input type="text" name="placename" id="placename"/>
 
 					<label>Review</label>
-					<input type="text" name="placereview"/>
+					<input type="text" name="placereview" id="placereview"/>
 	
-				</form>
 				<br/>
 				<br/>
-				<button>Submit</button>
+				<button onClick={this.props.newPlace}>Submit</button>
+				</div>
 			</div>
 			<div className="bottom"></div>
 		</div>			
   		);
   	};
 }
+
+const MapStateToProps = function(state, ownProps){
+	return {
+		usrLoggedIn:state._root.entries["0"][1].loggedIn
+	}
+}
+
+const MapDispatchToProps = function(dispatch){
+	return {newPlace: (evt) => {
+		console.log(evt)
+		let state = document.getElementById('state').value,
+			placename = document.getElementById('placename').value,
+			placereview = document.getElementById('placereview').value;
+		addPlace({state, placename, placereview}, dispatch)
+	}}
+}
+
+export default connect(MapStateToProps, MapDispatchToProps)(NewPlace);
