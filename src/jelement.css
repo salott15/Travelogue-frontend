@@ -8,6 +8,7 @@
 	padding-left: 10px;
 	padding-right: 10px;
 	background-image: url('./images/linedpaper.png');
+	vertical-align: top;
 }
 
 .journal h4 {

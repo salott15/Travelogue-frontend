@@ -3,21 +3,30 @@ import {connect} from 'react-redux';
 import './statepage.css';
 import {getUserJournalsByState} from './redux/journals/journalactions';
 import JournalElement from './jelement';
+import PlaceElement from './plelement';
+import {getUserPlacesByState} from './redux/places/placeactions';
 
 class StatePage extends Component {
 	
 	componentDidMount(){
 		this.props.getUserJournalsByState()
+		this.props.getUserPlacesByState()
 	}		
 
   render() {
   	var State = localStorage.getItem("state"), 
-  	journals = {},
-  	journalsArray = this.props.journals
-  	if(this.props.journals){
+  	journals = [],
+  	places = []
+  	console.log(this.props)
+  	if(this.props.journals.currentJournals){
   		//journalsArray = 
-  	 journals = journalsArray.map((jrnl, index) => {
+  	 journals = this.props.journals.currentJournals.map((jrnl, index) => {
   		return <JournalElement {...jrnl} key={index} />
+})};
+  	
+  	if(this.props.places.currentPlaces){
+  	 places = this.props.places.currentPlaces.map((place, index) => {
+  		return <PlaceElement {...place} key={index} />
   	})};
   	return(
   		<div>
@@ -26,12 +35,9 @@ class StatePage extends Component {
 		<div className="board">
 			<h2>{State}</h2>
 			
-			<div className="journal">
 				{journals}
-			</div>
-			<div className="places">
-				
-			</div>
+			
+			{places}
 		</div>
 
 		<div className="bottom"></div>
@@ -42,13 +48,14 @@ class StatePage extends Component {
 
 
   const MapStateToProps = function(state, ownProps){
-  	console.log(state);
-	return {journals: state._root.entries[1][1].currentJournals}
+	return {journals: state._root.entries[1][1].currentJournals, places: state._root.entries[2][1].currentPlaces}
 }
 
 const MapDispatchToProps = function(dispatch){
 	return {getUserJournalsByState: () => {
 		getUserJournalsByState(dispatch)
+	}, getUserPlacesByState: () => {
+		getUserPlacesByState(dispatch)
 	}}
 }
 

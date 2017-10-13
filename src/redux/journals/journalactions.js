@@ -21,9 +21,7 @@ function addJournalComplete(obj){
 	return { type: 'ADD_JOURNAL', paylod:obj };
 };
 
-export function getUserJournals(obj,dispatch) {
-	let data = JSON.stringify(obj);
-	console.log(data);
+export function getUserJournals(dispatch) {
 	// console.log(obj.username,obj.password,btoa(obj.username+":"+obj.password));
 	return fetch('http://localhost:3001/journals/' + localStorage.getItem("uid"),
 	{
@@ -32,16 +30,12 @@ export function getUserJournals(obj,dispatch) {
 			"Content-Type": "application/json",
 			//"Authorization": "Basic "+btoa(obj.username+":"+obj.password)
 		},
-		body: data
 	})
 	.then(obj => {
-			return dispatch(getJournalsComplete(obj),dispatch);
+		return obj.json()}).then( obj => {
+		console.log(obj)
+			return dispatch({ type: 'GET_JOURNALS', paylod:obj });
 	});
-};
-
-function getJournalsComplete(obj){
-	console.log('completed:',obj);
-	return { type: 'GET_JOURNALS', paylod:obj };
 };
 
 export function getUserJournalsByState(dispatch) {
@@ -82,27 +76,18 @@ export function getUserJournalsByState(dispatch) {
 function updateJournalComplete(obj){
 	console.log('completed:',obj);
 	return { type: 'UPDATE_JOURNAL', paylod:obj };
-};
+};*/
 
-export function deleteJournal(obj,dispatch) {
-	let data = JSON.stringify(obj);
-	console.log(data);
-	// console.log(obj.username,obj.password,btoa(obj.username+":"+obj.password));
-	return fetch('http://localhost:3001/journals/' + localStorage.getItem("jid"),
+export function deleteJournal(jid, dispatch) {
+	return fetch('http://localhost:3001/journals/' + jid,
 	{
 		method: "DELETE",
 		headers: {
 			"Content-Type": "application/json",
 			//"Authorization": "Basic "+btoa(obj.username+":"+obj.password)
-		},
-		body: data
+		}
 	})
 	.then(obj => {
-			return dispatch(deleteJournalComplete(obj),dispatch);
+			return dispatch({ type: 'DELETE_JOURNAL', paylod:obj });
 	});
 };
-
-function deleteJournalComplete(obj){
-	console.log('completed:',obj);
-	return { type: 'UPDATE_JOURNAL', paylod:obj };
-};*/

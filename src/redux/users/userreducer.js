@@ -5,14 +5,18 @@ const initialState = {
 	loggedIn: false
 }
 
-//Get State to be updated.
-
 function users(state = initialState, action){
 	switch (action.type)
 	{
 		case 'LOGIN_USER' :
 		return true;
 	}
+}
+
+function getUser(state = initialState, action) {
+	if(action.type === "GET_USER"){
+	return {...state, currentUser: action.paylod}}
+return state
 }
 
 function userReducer(state = initialState, action)

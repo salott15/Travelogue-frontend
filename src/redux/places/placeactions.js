@@ -44,27 +44,21 @@ function getPlacesComplete(obj){
 	return { type: 'GET_PLACES', paylod:obj };
 };
 
-export function getUserPlacesByState(obj,dispatch) {
-	let data = JSON.stringify(obj);
-	console.log(data);
+export function getUserPlacesByState(dispatch) {
 	// console.log(obj.username,obj.password,btoa(obj.username+":"+obj.password));
-	return fetch('http://localhost:3001/places/' + localStorage.getItem("uid") + localStorage.getItem("state"),
+	return fetch('http://localhost:3001/places/' + localStorage.getItem("uid") + "/" + localStorage.getItem("state"),
 	{
 		method: "GET",
 		headers: {
 			"Content-Type": "application/json",
 			//"Authorization": "Basic "+btoa(obj.username+":"+obj.password)
 		},
-		body: data
 	})
 	.then(obj => {
-			return dispatch(getPlacessByStateComplete(obj),dispatch);
+		return obj.json()}).then( obj => {
+		console.log(obj)
+			return dispatch({ type: 'GET_PLACES_BY_STATE', paylod:obj });
 	});
-};
-
-function getPlacessByStateComplete(obj){
-	console.log('completed:',obj);
-	return { type: 'GET_PLACES_BY_STATE', paylod:obj };
 };
 
 /*export function updatePlace(obj,dispatch) {

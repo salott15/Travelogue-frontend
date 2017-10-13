@@ -17,10 +17,11 @@ function addSessionEntry(state = initialState, action) {
 }
 
 function getCurrentJournals(state = initialState, action) {
-	console.log("a", action)
 	if(action.type === "GET_JOURNALS_BY_STATE"){
-		console.log(action.paylod)
 	return {...state, currentJournals: action.paylod}}
+	else if(action.type === "GET_JOURNALS"){
+		return {...state, currentJournals: action.paylod}
+	}
 return state
 }
 

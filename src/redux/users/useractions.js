@@ -1,4 +1,25 @@
-//TODO: Make 'http://localhost:3000' a config variable
+export function newUser(obj,dispatch) {
+	let data = JSON.stringify(obj);
+	console.log(data);
+	// console.log(obj.username,obj.password,btoa(obj.username+":"+obj.password));
+	return fetch('http://localhost:3001/users/',
+	{
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+			//"Authorization": "Basic "+btoa(obj.username+":"+obj.password)
+		},
+		body: data
+	})
+	.then(obj => {
+			return dispatch(addUserComplete(obj),dispatch);
+	});
+};
+
+function addUserComplete(obj){
+	console.log('completed:',obj);
+	return { type: 'ADD_USER', paylod:obj };
+};
 
 export function login(obj,dispatch) {
 	let data = JSON.stringify(obj);
@@ -48,18 +69,18 @@ export function testAuth(dispatch)
 	});
 }
 
-//
-//
-// export function getAuthToken(obj,dispatch)
-// {
-// 	let data = JSON.parse(obj);
-// 	return fetch('http://localhost:3000/api/auth/gettoken/'+data.username,{
-// 		method:"GET",
-// 	})
-// 	.then(res => res.json())
-// 	.then(obj => {
-// 		console.log('obj from getAuthToken:',obj);
-// 		dispatch({ type:'SET_USER_TOKEN', payload:obj});
-// 		//dispatch(loginComplete(obj),dispatch);
-// 	});
-// }
+export function getUser(dispatch) {
+	return fetch('http://localhost:3001/users/' + localStorage.getItem("uid"),
+	{
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json",
+		},
+	})
+	.then(obj => {
+		console.log(obj)
+		return obj.json()}).then( obj => {
+		console.log(obj)
+			return dispatch({ type: 'GET_USER', paylod:obj });
+	});
+};

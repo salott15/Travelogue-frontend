@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
 import './plelement.css';
 
-export default class PlaceElement extends Component {
-  render() {
+export default function PlaceElement(props) {
   	return(
-  		<div>
   		<div className="place">
-			<h3>Oregon</h3>
-			<h4>August 15, 2017</h4>
-			<h4>Rogue Brewery</h4>
-			<p>Blah Blah Blah review.</p>
+			<h3>{props.state}</h3>
+			<h4>{props.dateAdded}</h4>
+			<h4>{props.placename}</h4>
+			<p>{props.placereview}</p>
 			<button>Delete Place</button>
 		</div>
-		</div>
 		);
-  };
 }
