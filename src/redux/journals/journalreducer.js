@@ -22,6 +22,13 @@ function getCurrentJournals(state = initialState, action) {
 	else if(action.type === "GET_JOURNALS"){
 		return {...state, currentJournals: action.paylod}
 	}
+	else if (action.type === "DELETE_JOURNAL"){
+		var newCurrentJournals = state.currentJournals.filter((item) => {
+			console.log(item); 
+			return item._id != action.paylod})
+		console.log(action, state.currentJournals, newCurrentJournals)
+		return {...state, currentJournals: newCurrentJournals}
+	}
 return state
 }
 

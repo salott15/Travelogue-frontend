@@ -88,6 +88,6 @@ export function deleteJournal(jid, dispatch) {
 		}
 	})
 	.then(obj => {
-			return dispatch({ type: 'DELETE_JOURNAL', paylod:obj });
+			return dispatch({ type: 'DELETE_JOURNAL', paylod:jid });
 	});
 };

@@ -11,8 +11,8 @@ import JournalElement from './jelement';
 class Journals extends Component {
 
 	componentDidMount(){
-		this.props.getUserJournals(),
-		this.props.getUser(),
+		this.props.getUserJournals();
+		this.props.getUser();
 		//this.props.deleteJournalElement = function(){console.log("abc")}
 	}
 
@@ -21,7 +21,7 @@ class Journals extends Component {
   	if(this.props.journals.currentJournals){
   		//journalsArray = 
   	 journals = this.props.journals.currentJournals.map((jrnl, index) => {
-  		return <JournalElement {...jrnl} key={index} deleteJournal={this.props.deleteJournalElement} />
+  		return <JournalElement {...jrnl} key={index} deleteJournal={(e) => {this.props.deleteJournalElement(e)}} />
 })};
 
   	return(
@@ -29,7 +29,7 @@ class Journals extends Component {
   			<h1>TRAVELOGUE</h1>
 
 			<div className="board">
-				<h2>'s Journals</h2>
+				<h2>{this.props.name}'s Journals</h2>
 				{journals}
 				<div className="addjournal"><Link to="/newjournal" style={{textDecoration: 'none'}}>
 					<h3>Add a new journal!</h3></Link>
@@ -44,7 +44,9 @@ class Journals extends Component {
   }
 
 const MapStateToProps = function(state, ownProps){
-	return {journals: state._root.entries[1][1].currentJournals}
+	console.log(state, state._root.entries[1][1].currentJournals)
+	return {journals: state._root.entries[1][1].currentJournals, 
+		firstname: state._root.entries["0"][1].loggedIn}
 }
 
 const MapDispatchToProps = function(dispatch){
@@ -52,10 +54,8 @@ const MapDispatchToProps = function(dispatch){
 		getUserJournals(dispatch)
 	}, getUser: () => {
 		getUser(dispatch)
-	}, deleteJournalElement: (evt) => {
-		console.log(evt)
-		{/*let jid = evt.currentTarget.getAttribute("data-jid")
-		deleteJournal(jid, dispatch)*/}
+	}, deleteJournalElement: (evt) => { 
+		deleteJournal(evt.target.getAttribute("data-jid"), dispatch)
 	}}
 }
 

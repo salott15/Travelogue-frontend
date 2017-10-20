@@ -6,10 +6,11 @@ const initialState = {
 }
 
 function users(state = initialState, action){
+	console.log(action)
 	switch (action.type)
 	{
 		case 'LOGIN_USER' :
-		return true;
+		return {...state, loggedIn: true, name:action.paylod.firstname};
 	}
 }
 
@@ -23,7 +24,7 @@ function userReducer(state = initialState, action)
 {
   return {
 		loggedIn:
-		users(state.loggedIn,action)
+		users(state, action)
   };
 }
 
