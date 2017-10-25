@@ -8,7 +8,7 @@ export default function PlaceElement(props) {
 			<h4>{props.dateAdded}</h4>
 			<h4>{props.placename}</h4>
 			<p>{props.placereview}</p>
-			<button>Delete Place</button>
+			<button data-pid={props._id} onClick={props.deletePlace}>Delete Place</button>
 		</div>
 		);
 }

@@ -13,13 +13,11 @@ class Journals extends Component {
 	componentDidMount(){
 		this.props.getUserJournals();
 		this.props.getUser();
-		//this.props.deleteJournalElement = function(){console.log("abc")}
 	}
 
   render() {
   	var journals = []
   	if(this.props.journals.currentJournals){
-  		//journalsArray = 
   	 journals = this.props.journals.currentJournals.map((jrnl, index) => {
   		return <JournalElement {...jrnl} key={index} deleteJournal={(e) => {this.props.deleteJournalElement(e)}} />
 })};

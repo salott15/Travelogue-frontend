@@ -21,21 +21,17 @@ function addPlaceComplete(obj){
 	return { type: 'ADD_PLACE', paylod:obj };
 }
 
-export function getUserPlaces(obj,dispatch) {
-	let data = JSON.stringify(obj);
-	console.log(data);
-	// console.log(obj.username,obj.password,btoa(obj.username+":"+obj.password));
+export function getUserPlaces(dispatch) {
 	return fetch('http://localhost:3001/places/' + localStorage.getItem("uid"),
 	{
 		method: "GET",
 		headers: {
 			"Content-Type": "application/json",
 			//"Authorization": "Basic "+btoa(obj.username+":"+obj.password)
-		},
-		body: data
+		}
 	})
 	.then(obj => {
-			return dispatch(getPlacesComplete(obj),dispatch);
+			return dispatch(getPlacesComplete(obj));
 	});
 };
 
@@ -51,11 +47,10 @@ export function getUserPlacesByState(dispatch) {
 		method: "GET",
 		headers: {
 			"Content-Type": "application/json",
-			//"Authorization": "Basic "+btoa(obj.username+":"+obj.password)
+			"Authorization": "Bearer "+localStorage.getItem("token")
 		},
 	})
 	.then(obj => {
-		return obj.json()}).then( obj => {
 		console.log(obj)
 			return dispatch({ type: 'GET_PLACES_BY_STATE', paylod:obj });
 	});
@@ -82,27 +77,18 @@ export function getUserPlacesByState(dispatch) {
 function updatePlaceComplete(obj){
 	console.log('completed:',obj);
 	return { type: 'UPDATE_PLACE', paylod:obj };
-};
+};*/
 
-export function deletePlace(obj,dispatch) {
-	let data = JSON.stringify(obj);
-	console.log(data);
-	// console.log(obj.username,obj.password,btoa(obj.username+":"+obj.password));
-	return fetch('http://localhost:3001/places/' + localStorage.getItem("pid"),
+export function deletePlace(pid, dispatch) {
+	return fetch('http://localhost:3001/places/' + pid,
 	{
 		method: "DELETE",
 		headers: {
 			"Content-Type": "application/json",
 			//"Authorization": "Basic "+btoa(obj.username+":"+obj.password)
-		},
-		body: data
+		}
 	})
 	.then(obj => {
-			return dispatch(deletePlaceComplete(obj),dispatch);
+			return dispatch({ type: 'DELETE_PLACE', paylod:pid });
 	});
 };
-
-function deletePlaceComplete(obj){
-	console.log('completed:',obj);
-	return { type: 'UPDATE_JOURNAL', paylod:obj };
-};*/

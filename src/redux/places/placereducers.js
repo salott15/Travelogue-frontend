@@ -19,8 +19,18 @@ function addSessionEntry(state = initialState, action) {
 function getCurrentPlaces(state = initialState, action) {
 	console.log("a", action)
 	if(action.type === "GET_PLACES_BY_STATE"){
-		console.log(action.paylod)
 	return {...state, currentPlaces: action.paylod}}
+	else if(action.type === "GET_PLACES"){
+		console.log(action.paylod, action)
+		return {...state, currentPlaces: action.paylod}
+	}
+	else if (action.type === "DELETE_PLACE"){
+		var newCurrentPlaces = state.currentPlaces.filter((item) => {
+			console.log(item); 
+			return item._id != action.paylod})
+		console.log(action, state.currentPlaces, newCurrentPlaces)
+		return {...state, currentPlaces: newCurrentPlaces}
+	}
 return state
 }
 
