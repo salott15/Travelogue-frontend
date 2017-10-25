@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux-immutable';
 
 const initialState = {
-	lastSessionEntry: "", 
+	lastSessionEntry: "",
 	currentPlaces: []
 }
 
@@ -22,11 +22,11 @@ function getCurrentPlaces(state = initialState, action) {
 	return {...state, currentPlaces: action.paylod}}
 	else if(action.type === "GET_PLACES"){
 		console.log(action.paylod, action)
-		return {...state, currentPlaces: action.paylod}
+		return {...state, currentPlaces: action.paylod.placesRef}
 	}
 	else if (action.type === "DELETE_PLACE"){
 		var newCurrentPlaces = state.currentPlaces.filter((item) => {
-			console.log(item); 
+			console.log(item);
 			return item._id != action.paylod})
 		console.log(action, state.currentPlaces, newCurrentPlaces)
 		return {...state, currentPlaces: newCurrentPlaces}

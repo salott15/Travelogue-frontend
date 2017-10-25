@@ -31,7 +31,8 @@ export function getUserPlaces(dispatch) {
 		}
 	})
 	.then(obj => {
-			return dispatch(getPlacesComplete(obj));
+			return obj.json()
+			.then( (obj) => dispatch(getPlacesComplete(obj)) )
 	});
 };
 

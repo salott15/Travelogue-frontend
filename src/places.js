@@ -26,7 +26,7 @@ class Places extends Component {
   			<h1>TRAVELOGUE</h1>
 
 			<div className="board">
-				<h2>{this.props.name}'s Places</h2>
+				<h2>{this.props.name}&rsquo;s Places</h2>
 				{places}
 				<div className="addPlace"><Link to="/newplace" style={{textDecoration: 'none'}}>
 					<h3>Add a new place!</h3></Link>
@@ -42,7 +42,7 @@ class Places extends Component {
 
 const MapStateToProps = function(state, ownProps){
 	console.log(state, state._root.entries[2][1].currentPlaces)
-	return {places: state._root.entries[2][1].currentPlaces, 
+	return {places: state._root.entries[2][1].currentPlaces,
 		firstname: state._root.entries["0"][1].loggedIn}
 }
 
@@ -51,7 +51,7 @@ const MapDispatchToProps = function(dispatch){
 		getUserPlaces(dispatch)
 	}, getUser: () => {
 		getUser(dispatch)
-	}, deletePlaceElement: (evt) => { 
+	}, deletePlaceElement: (evt) => {
 		deletePlace(evt.target.getAttribute("data-pid"), dispatch)
 	}}
 }
