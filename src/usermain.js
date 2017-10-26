@@ -25,7 +25,7 @@ class UserMain extends Component {
     	<div>
     		<h1>TRAVELOGUE</h1>
 			<div className="usermap">
-  				<h2>Sari's Map</h2>
+  				<h2>{this.props.usrName}&rsquo;s Map</h2>
   				<Map />
   				<ul className="options">
 		    		<li><Link to="/journals" style={{textDecoration: 'none', color: "black"}}>Journals</Link></li>
@@ -41,7 +41,8 @@ class UserMain extends Component {
 const mapStateToProps = (state, ownProps) => {
 	console.log('state is:',state, ownProps);
 	return {
-    usrLoggedIn:state._root.entries["0"][1].loggedIn
+    usrLoggedIn:state._root.entries["0"][1].loggedIn,
+    usrName:state._root.entries["0"][1].loggedIn.name
   }
 };
 

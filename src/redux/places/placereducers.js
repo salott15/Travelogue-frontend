@@ -21,8 +21,9 @@ function getCurrentPlaces(state = initialState, action) {
 	if(action.type === "GET_PLACES_BY_STATE"){
 	return {...state, currentPlaces: action.paylod}}
 	else if(action.type === "GET_PLACES"){
-		console.log(action.paylod, action)
-		return {...state, currentPlaces: action.paylod.placesRef}
+		let getPlacesNew = {...state, currentPlaces: action.paylod.placesRef};
+		console.log('getPlacesNew:',getPlacesNew)
+		return getPlacesNew;
 	}
 	else if (action.type === "DELETE_PLACE"){
 		var newCurrentPlaces = state.currentPlaces.filter((item) => {
