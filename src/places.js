@@ -17,6 +17,7 @@ class Places extends Component {
 
   render() {
   	var places = []
+  	console.log(this.props)
   	if(this.props.places.currentPlaces){
   	 places = this.props.places.currentPlaces.map((plc, index) => {
   		return <PlaceElement {...plc} key={index} deletePlace={(e) => {this.props.deletePlaceElement(e)}} />
