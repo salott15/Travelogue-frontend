@@ -12,7 +12,8 @@ export function addPlace(obj,dispatch) {
 		body: data
 	})
 	.then(obj => {
-			return dispatch(addPlaceComplete(obj),dispatch);
+			//return dispatch(addPlaceComplete(obj),dispatch);
+			window.location.href="/places"
 	});
 };
 

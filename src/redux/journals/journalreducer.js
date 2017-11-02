@@ -20,6 +20,7 @@ function getCurrentJournals(state = initialState, action) {
 	if(action.type === "GET_JOURNALS_BY_STATE"){
 	return {...state, currentJournals: action.paylod}}
 	else if(action.type === "GET_JOURNALS"){
+		console.log(state)
 		return {...state, currentJournals: action.paylod}
 	}
 	else if (action.type === "DELETE_JOURNAL"){
@@ -27,7 +28,7 @@ function getCurrentJournals(state = initialState, action) {
 			console.log(item); 
 			return item._id != action.paylod})
 		console.log(action, state.currentJournals, newCurrentJournals)
-		return {...state, currentJournals: newCurrentJournals}
+		return {...state, currentJournals: newCurrentJournals.currentJournals}
 	}
 return state
 }
@@ -38,7 +39,7 @@ function journalReducer(state = initialState, action)
   	lastSessionEntry:
 		addSessionEntry(state.lastSessionEntry,action),
 	currentJournals:
-		getCurrentJournals(state.currentJournals, action)
+		getCurrentJournals(state, action)
   };
 }
 

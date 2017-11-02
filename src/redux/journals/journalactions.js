@@ -12,7 +12,8 @@ export function addJournal(obj,dispatch) {
 		body: data
 	})
 	.then(obj => {
-			return dispatch(addJournalComplete(obj),dispatch);
+			//return dispatch(addJournalComplete(obj),dispatch);
+			window.location.href="/journals"
 	});
 };
 
