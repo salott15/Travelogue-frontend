@@ -15,7 +15,7 @@ p {
 	display: inline-block;
 }
 
-.title, .login {
+.title, .login, .mypage, .newjournallink, .newplacelink {
 	margin:0px;
 	padding:0px;
 }
@@ -27,11 +27,12 @@ p {
 	margin-left: 5px;
 }
 
-.login {
+.login, .mypage, .newjournallink, .newplacelink {
 	font-family: 'Raleway', sans-serif;
 	font-weight: lighter;
 	font-size: 20px;
 	float: right;
 	margin-right:5px;
 	margin-top: 5px;
+	margin-left: 5px;
 }

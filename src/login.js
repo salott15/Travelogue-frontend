@@ -1,5 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Link, Redirect} from 'react-router-dom';
+import {RedirectToAction} from 'react-router';
 import { connect } from 'react-redux';
 import './login.css';
 import {login, testAuth} from './redux/users/useractions'
@@ -15,7 +16,7 @@ class Login extends React.Component {
 		if(this.props.loggedIn)
 		{
 			console.log('ran?', Router);
-			return <Redirect to={{ pathname: '/usermain' }}/>
+			return RedirectToAction("/usermain", new {name: _root.entries["0"][1].name});
 		}
   	return(
   		<div>

@@ -23,7 +23,7 @@ export default class App extends Component {
 
         <div className="features">
           <h3>Store what's important.</h3>
-          <p>Upload trip photos, journal entries, and favorite places.</p>
+          <p>Upload trip journal entries and favorite places.</p>
         </div>
 
         <div className="start">

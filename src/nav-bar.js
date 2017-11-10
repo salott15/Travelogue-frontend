@@ -19,6 +19,9 @@ export default function NavBar(props){
 				<header className="nav-bar">
 					<p className="title"><Link to="/" style={{textDecoration: 'none', color: "white"}}>TRAVELOGUE</Link></p>
 					<p className="login"><Link to="/login" style={{textDecoration: 'none', color: "white"}}>Login</Link></p>
+					<p className="mypage"><Link to="/usermain" style={{textDecoration: 'none', color: "white"}}>My Page ||</Link></p>
+					<p className="newjournallink"><Link to="/newjournal" style={{textDecoration: 'none', color: "white"}}>New Journal ||</Link></p>
+					<p className="newplacelink"><Link to="/newplace" style={{textDecoration: 'none', color: "white"}}>New Place ||</Link></p>
 				</header>
 
 				<main>
