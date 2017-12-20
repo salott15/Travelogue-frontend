@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import './journals.css';
 import {getUserJournals} from './redux/journals/journalactions';
 import {getUser} from './redux/users/useractions';
@@ -42,9 +42,9 @@ class Journals extends Component {
   }
 
 const MapStateToProps = function(state, ownProps){
-	console.log(state._root.entries)
-	return {journals: state._root.entries[1][1].currentJournals.currentJournals.currentJournals,
-		firstname: state._root.entries["0"][1].loggedIn.name}
+	console.log(state)
+	return {journals: state.journal.currentJournals.currentJournals,
+		firstname: state.users.loggedIn.name}
 }
 
 const MapDispatchToProps = function(dispatch){

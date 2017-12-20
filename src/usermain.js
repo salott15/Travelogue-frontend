@@ -41,8 +41,8 @@ class UserMain extends Component {
 const mapStateToProps = (state, ownProps) => {
 	console.log('state is:',state, ownProps);
 	return {
-    usrLoggedIn:state._root.entries["0"][1].loggedIn,
-    usrName:state._root.entries["0"][1].loggedIn.name
+    usrLoggedIn:state.users.loggedIn,
+    usrName:state.users.name
   }
 };
 

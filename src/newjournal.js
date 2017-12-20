@@ -93,7 +93,7 @@ class NewJournal extends Component {
 
 const MapStateToProps = function(state, ownProps){
 	return {
-		usrLoggedIn:state._root.entries["0"][1].loggedIn
+		usrLoggedIn:state.users.loggedIn
 	}
 }
 

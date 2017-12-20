@@ -42,9 +42,8 @@ class Places extends Component {
   }
 
 const MapStateToProps = function(state, ownProps){
-	console.log(state, state._root.entries[2][1].currentPlaces)
-	return {places: state._root.entries[2][1].currentPlaces,
-		firstname: state._root.entries["0"][1].loggedIn}
+	return {places: state.place.currentPlaces,
+		firstname: state.users.loggedIn}
 }
 
 const MapDispatchToProps = function(dispatch){

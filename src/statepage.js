@@ -17,7 +17,6 @@ class StatePage extends Component {
   	var State = localStorage.getItem("state"), 
   	journals = [],
   	places = []
-  	console.log(this.props)
   	if(this.props.journals.currentJournals){
   		//journalsArray = 
   	 journals = this.props.journals.currentJournals.map((jrnl, index) => {
@@ -25,6 +24,7 @@ class StatePage extends Component {
 })};
   	
   	if(this.props.places.currentPlaces){
+      console.log(this.props.places)
   	 places = this.props.places.currentPlaces.map((place, index) => {
   		return <PlaceElement {...place} key={index} />
   	})};
@@ -48,7 +48,8 @@ class StatePage extends Component {
 
 
   const MapStateToProps = function(state, ownProps){
-	return {journals: state._root.entries[1][1].currentJournals, places: state._root.entries[2][1].currentPlaces}
+    console.log(state)
+	return {journals: state.journal.currentJournals.currentJournals, places: state.place.currentPlaces}
 }
 
 const MapDispatchToProps = function(dispatch){

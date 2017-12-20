@@ -34,6 +34,7 @@ export function getUserPlaces(dispatch) {
 	.then(obj => {
 			return obj.json()
 			.then( (obj) => dispatch(getPlacesComplete(obj)) )
+
 	});
 };
 
@@ -53,8 +54,8 @@ export function getUserPlacesByState(dispatch) {
 		},
 	})
 	.then(obj => {
-		console.log(obj)
-			return dispatch({ type: 'GET_PLACES_BY_STATE', paylod:obj });
+			return obj.json()
+			.then( (obj) => dispatch({ type: 'GET_PLACES_BY_STATE', paylod:obj }));
 	});
 };
 

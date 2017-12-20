@@ -11,10 +11,26 @@ export function newUser(obj,dispatch) {
 		},
 		body: data
 	})
-	.then(obj => {
-			return dispatch(addUserComplete(obj),dispatch);
-	});
+	.then(response => {
+		return response.json()
+	})
+	.then(response => {
+		if( response.message )	{
+			return dispatch(registerUserError(response.message))
+		}
+		else{
+			window.location = "/login"
+		}
+	})
 };
+
+function registerUserError(error){
+	console.log(error)
+	return {
+		type: 'USER_REGISTER_ERROR', 
+		error 
+	}
+}
 
 function addUserComplete(obj){
 	console.log('completed:',obj);

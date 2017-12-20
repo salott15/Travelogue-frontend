@@ -12,12 +12,12 @@ class Login extends React.Component {
 	}
 
   render() {
-  	console.log(this.props)
+  	/*console.log(this.props)
 		if(this.props.loggedIn)
 		{
 			console.log('ran?', Router);
-			return RedirectToAction("/usermain", new {name: _root.entries["0"][1].name});
-		}
+			return RedirectToAction("/usermain", new {name: state._root.entries["0"][1].name});
+		}*/
   	return(
   		<div>
 				<h1>TRAVELOGUE</h1>
@@ -38,14 +38,6 @@ class Login extends React.Component {
   };
  }
 
-const mapStateToProps = (state, ownProps) => {
-	//var href = this.context.router.history.createHref(typeof to === 'string' ? { pathname: to } : to);
-	console.log('state is:',state, ownProps);
-	return {
-		loggedIn: state._root.entries[0][1].loggedIn
-	}
-};
-
  const mapDispatchToProps = (dispatch) => {
  	return {
  		login: (e) => {
@@ -59,4 +51,4 @@ const mapStateToProps = (state, ownProps) => {
  	}
  }
 
- export default connect( mapStateToProps, mapDispatchToProps )(Login);
+ export default connect( null, mapDispatchToProps )(Login);

@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import './createaccount.css';
 import {connect} from 'react-redux';
 import {newUser} from './redux/users/useractions';
 
 class CreateAccount extends Component {
   render() {
+  	console.log(this.props.error)
   	return(
   		<div>
   			<h1>TRAVELOGUE</h1>
 
 			<div className="createaccount">
 				<h2>Create an account</h2>
+				<p>{this.props.error}</p>
 				<div>
 					<label>First Name</label>
 					<input type="text" name="firstname" id="firstname"/>
@@ -37,14 +38,14 @@ class CreateAccount extends Component {
   	};
 }
 
-const MapStateToProps = function(state, ownProps){
+const mapStateToProps = function(state, ownProps){
 	return {
+		error: state.users.errorMessage
 	}
 }
 
-const MapDispatchToProps = function(dispatch){
+const mapDispatchToProps = function(dispatch){
 	return {newUser: (evt) => {
-		console.log(evt)
 		let firstname = document.getElementById('firstname').value,
 			lastname = document.getElementById('lastname').value,
 			email = document.getElementById('email').value,
@@ -53,4 +54,4 @@ const MapDispatchToProps = function(dispatch){
 	}}
 }
 
-export default connect(MapStateToProps, MapDispatchToProps)(CreateAccount);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateAccount);

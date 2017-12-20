@@ -6,6 +6,7 @@
     "d3": "^4.10.0",
     "immutable": "^3.8.1",
     "jwt-decode": "^2.2.0",
+    "moment": "^2.20.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.6",
