@@ -50,45 +50,27 @@ export function getUserJournalsByState(dispatch) {
 		},
 	})
 	.then(obj => {
-		return obj.json()}).then( obj => {
+		return obj.json()})
+	.then( obj => {
 		console.log(obj)
 			return dispatch({ type: 'GET_JOURNALS_BY_STATE', paylod:obj });
 	});
 };
 
-/*export function updateJournal(obj,dispatch) {
-	let data = JSON.stringify(obj);
-	console.log(data);
-	// console.log(obj.username,obj.password,btoa(obj.username+":"+obj.password));
-	return fetch('http://localhost:3001/journals/' + localStorage.getItem("jid"),
-	{
-		method: "PUT",
-		headers: {
-			"Content-Type": "application/json",
-			//"Authorization": "Basic "+btoa(obj.username+":"+obj.password)
-		},
-		body: data
-	})
-	.then(obj => {
-			return dispatch(updateJournalComplete(obj),dispatch);
-	});
-};
-
-function updateJournalComplete(obj){
-	console.log('completed:',obj);
-	return { type: 'UPDATE_JOURNAL', paylod:obj };
-};*/
-
 export function deleteJournal(jid, dispatch) {
-	return fetch('http://localhost:3001/journals/' + jid,
-	{
-		method: "DELETE",
-		headers: {
-			"Content-Type": "application/json",
-			//"Authorization": "Basic "+btoa(obj.username+":"+obj.password)
-		}
-	})
-	.then(obj => {
-			return dispatch({ type: 'DELETE_JOURNAL', paylod:jid });
-	});
+    return fetch('http://localhost:3001/journals/' + jid,
+    {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            //"Authorization": "Basic "+btoa(obj.username+":"+obj.password)
+        }
+    })
+    .then(response => {
+    	console.log(response)
+      return response.json()
+    })
+    .then(data => {
+      return console.log(data)
+    })
 };
