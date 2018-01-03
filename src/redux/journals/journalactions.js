@@ -1,7 +1,5 @@
 export function addJournal(obj,dispatch) {
 	let data = JSON.stringify(obj);
-	console.log(data);
-	// console.log(obj.username,obj.password,btoa(obj.username+":"+obj.password));
 	return fetch('http://localhost:3001/journals/' + localStorage.getItem("uid"),
 	{
 		method: "POST",
@@ -12,7 +10,6 @@ export function addJournal(obj,dispatch) {
 		body: data
 	})
 	.then(obj => {
-			//return dispatch(addJournalComplete(obj),dispatch);
 			window.location.href="/journals"
 	});
 };
@@ -32,10 +29,11 @@ export function getUserJournals(dispatch) {
 			//"Authorization": "Basic "+btoa(obj.username+":"+obj.password)
 		},
 	})
-	.then(obj => {
-		return obj.json()}).then( obj => {
-		console.log(obj)
-			return dispatch({ type: 'GET_JOURNALS', paylod:obj });
+	.then(response => {
+		return response.json()
+	})
+	.then(journals => {
+			return dispatch({ type: 'GET_JOURNALS', paylod:journals });
 	});
 };
 
@@ -56,29 +54,6 @@ export function getUserJournalsByState(dispatch) {
 	});
 };
 
-/*export function updateJournal(obj,dispatch) {
-	let data = JSON.stringify(obj);
-	console.log(data);
-	// console.log(obj.username,obj.password,btoa(obj.username+":"+obj.password));
-	return fetch('http://localhost:3001/journals/' + localStorage.getItem("jid"),
-	{
-		method: "PUT",
-		headers: {
-			"Content-Type": "application/json",
-			//"Authorization": "Basic "+btoa(obj.username+":"+obj.password)
-		},
-		body: data
-	})
-	.then(obj => {
-			return dispatch(updateJournalComplete(obj),dispatch);
-	});
-};
-
-function updateJournalComplete(obj){
-	console.log('completed:',obj);
-	return { type: 'UPDATE_JOURNAL', paylod:obj };
-};*/
-
 export function deleteJournal(jid, dispatch) {
 	return fetch('http://localhost:3001/journals/' + jid,
 	{
@@ -89,6 +64,7 @@ export function deleteJournal(jid, dispatch) {
 		}
 	})
 	.then(obj => {
+		console.log(obj);
 			return dispatch({ type: 'DELETE_JOURNAL', paylod:jid });
 	});
 };
