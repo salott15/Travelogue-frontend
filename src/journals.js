@@ -17,8 +17,8 @@ class Journals extends Component {
 
   render() {
   	var journals = []
-  	if(this.props.journals.currentJournals){
-  	 journals = this.props.journals.currentJournals.map((jrnl, index) => {
+  	if(this.props.journals){
+  	 journals = this.props.journals.map((jrnl, index) => {
   		return <JournalElement {...jrnl} key={index} deleteJournal={(e) => {this.props.deleteJournalElement(e)}} />
 })};
 
@@ -42,8 +42,7 @@ class Journals extends Component {
   }
 
 const MapStateToProps = function(state, ownProps){
-	console.log(state)
-	return {journals: state.journal.currentJournals.currentJournals,
+	return {journals: state.journal.currentJournals,
 		firstname: state.users.loggedIn.name}
 }
 
