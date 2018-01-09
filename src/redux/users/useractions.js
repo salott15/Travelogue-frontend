@@ -37,7 +37,7 @@ function registerUserError(error){
 export function login(obj,dispatch) {
 	let data = JSON.stringify(obj);
 	// console.log(obj.username,obj.password,btoa(obj.username+":"+obj.password));
-	return fetch(`${API_BASE_URL}api/auth/login`,
+	return fetch(`${API_BASE_URL}/api/auth/login`,
 	{
 		method: "POST",
 		headers: {
@@ -47,7 +47,7 @@ export function login(obj,dispatch) {
 		body: data
 	})
 	.then(obj => {
-		fetch(`${API_BASE_URL}api/auth/login`,
+		fetch(`${API_BASE_URL}/api/auth/login`,
 		{
 			method: "GET"
 		})
