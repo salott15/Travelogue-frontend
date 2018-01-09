@@ -1,8 +1,10 @@
+import {API_BASE_URL} from '../../config'
+
 export function addPlace(obj,dispatch) {
 	let data = JSON.stringify(obj);
 	console.log(data);
 	// console.log(obj.username,obj.password,btoa(obj.username+":"+obj.password));
-	return fetch('http://localhost:3001/places/' + localStorage.getItem("uid"),
+	return fetch(`${API_BASE_URL}/localStorage.getItem("uid")`,
 	{
 		method: "POST",
 		headers: {
@@ -17,13 +19,8 @@ export function addPlace(obj,dispatch) {
 	});
 };
 
-function addPlaceComplete(obj){
-	console.log('completed:',obj);
-	return { type: 'ADD_PLACE', paylod:obj };
-}
-
 export function getUserPlaces(dispatch) {
-	return fetch('http://localhost:3001/places/' + localStorage.getItem("uid"),
+	return fetch(`${API_BASE_URL}/localStorage.getItem("uid")`,
 	{
 		method: "GET",
 		headers: {
@@ -31,21 +28,19 @@ export function getUserPlaces(dispatch) {
 			//"Authorization": "Basic "+btoa(obj.username+":"+obj.password)
 		}
 	})
-	.then(obj => {
-			return obj.json()
-			.then( (obj) => dispatch(getPlacesComplete(obj)) )
-
-	});
+	.then(response => {
+		return response.json()
+	})
+	.then(data => dispatch(getPlacesComplete(data.placesRef)) )
 };
 
-function getPlacesComplete(obj){
-	console.log('completed:',obj);
-	return { type: 'GET_PLACES', paylod:obj };
+function getPlacesComplete(places){
+	return { type: 'GET_PLACES', paylod:places };
 };
 
 export function getUserPlacesByState(dispatch) {
 	// console.log(obj.username,obj.password,btoa(obj.username+":"+obj.password));
-	return fetch('http://localhost:3001/places/' + localStorage.getItem("uid") + "/" + localStorage.getItem("state"),
+	return fetch(`${API_BASE_URL}/localStorage.getItem("uid")/localStorage.getItem("state")`,
 	{
 		method: "GET",
 		headers: {
@@ -53,37 +48,14 @@ export function getUserPlacesByState(dispatch) {
 			"Authorization": "Bearer "+localStorage.getItem("token")
 		},
 	})
-	.then(obj => {
-			return obj.json()
-			.then( (obj) => dispatch({ type: 'GET_PLACES_BY_STATE', paylod:obj }));
-	});
-};
-
-/*export function updatePlace(obj,dispatch) {
-	let data = JSON.stringify(obj);
-	console.log(data);
-	// console.log(obj.username,obj.password,btoa(obj.username+":"+obj.password));
-	return fetch('http://localhost:3001/places/' + localStorage.getItem("pid"),
-	{
-		method: "PUT",
-		headers: {
-			"Content-Type": "application/json",
-			//"Authorization": "Basic "+btoa(obj.username+":"+obj.password)
-		},
-		body: data
+	.then(response => {
+			return response.json()
 	})
-	.then(obj => {
-			return dispatch(updatePlaceComplete(obj),dispatch);
-	});
+	.then( (data) => dispatch({ type: 'GET_PLACES_BY_STATE', paylod:data }));
 };
-
-function updatePlaceComplete(obj){
-	console.log('completed:',obj);
-	return { type: 'UPDATE_PLACE', paylod:obj };
-};*/
 
 export function deletePlace(pid, dispatch) {
-	return fetch('http://localhost:3001/places/' + pid,
+	return fetch(`${API_BASE_URL}/localStorage.getItem("uid")` + pid,
 	{
 		method: "DELETE",
 		headers: {

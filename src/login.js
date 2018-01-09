@@ -1,6 +1,4 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Link, Redirect} from 'react-router-dom';
-import {RedirectToAction} from 'react-router';
 import { connect } from 'react-redux';
 import './login.css';
 import {login, testAuth} from './redux/users/useractions'
@@ -27,7 +25,7 @@ class Login extends React.Component {
 					<label>Email</label>
 					<input id="login-email" type="email" name="email"/>
 					<label>Password</label>
-					<input id="login-password" type="text" name="password"/><br/> <br/>
+					<input id="login-password" type="password" name="password"/><br/> <br/>
 					<button>Lets go!</button>
 					<br/>
 				</form>

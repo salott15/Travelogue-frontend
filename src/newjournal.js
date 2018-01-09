@@ -4,10 +4,6 @@ import './newjournal.css';
 import {addJournal} from './redux/journals/journalactions';
 
 class NewJournal extends Component {
-	 constructor(props)
-  {
-    super(props);
-  }
   render() {
   	console.log(this.props)
   	 /*if(!this.props.usrLoggedIn){

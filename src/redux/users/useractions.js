@@ -1,8 +1,10 @@
+import {API_BASE_URL} from '../../config'
+
 export function newUser(obj,dispatch) {
 	let data = JSON.stringify(obj);
 	console.log(data);
 	// console.log(obj.username,obj.password,btoa(obj.username+":"+obj.password));
-	return fetch('http://localhost:3001/users/',
+	return fetch(`${API_BASE_URL}/users`,
 	{
 		method: "POST",
 		headers: {
@@ -32,15 +34,10 @@ function registerUserError(error){
 	}
 }
 
-function addUserComplete(obj){
-	console.log('completed:',obj);
-	return { type: 'ADD_USER', paylod:obj };
-};
-
 export function login(obj,dispatch) {
 	let data = JSON.stringify(obj);
 	// console.log(obj.username,obj.password,btoa(obj.username+":"+obj.password));
-	return fetch('http://localhost:3001/api/auth/login',
+	return fetch(`${API_BASE_URL}api/auth/login`,
 	{
 		method: "POST",
 		headers: {
@@ -50,7 +47,7 @@ export function login(obj,dispatch) {
 		body: data
 	})
 	.then(obj => {
-		fetch('http://localhost:3001/api/auth/authtoken',
+		fetch(`${API_BASE_URL}api/auth/login`,
 		{
 			method: "GET"
 		})
@@ -86,7 +83,7 @@ export function testAuth(dispatch)
 }
 
 export function getUser(dispatch) {
-	return fetch('http://localhost:3001/users/' + localStorage.getItem("uid"),
+	return fetch(`${API_BASE_URL}/users/localStorage.getItem("uid")`,
 	{
 		method: "GET",
 		headers: {

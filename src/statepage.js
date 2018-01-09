@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import './statepage.css';
-import {getUserJournalsByState} from './redux/journals/journalactions';
+import {getUserJournalsByState, deleteJournal} from './redux/journals/journalactions';
 import JournalElement from './jelement';
 import PlaceElement from './plelement';
-import {getUserPlacesByState} from './redux/places/placeactions';
+import {getUserPlacesByState, deletePlace} from './redux/places/placeactions';
 
 class StatePage extends Component {
 	
@@ -14,26 +14,24 @@ class StatePage extends Component {
 	}		
 
   render() {
-  	var State = localStorage.getItem("state"), 
+  	var USState = localStorage.getItem("state"), 
   	journals = [],
   	places = []
-  	if(this.props.journals.currentJournals){
-  		//journalsArray = 
-  	 journals = this.props.journals.currentJournals.map((jrnl, index) => {
-  		return <JournalElement {...jrnl} key={index} />
+  	if(this.props.journals){
+  	 journals = this.props.journals.map((jrnl, index) => {
+  		return <JournalElement {...jrnl} key={index} deleteJournal={(e) => {this.props.deleteJournalElement(e)}}/>
 })};
   	
-  	if(this.props.places.currentPlaces){
-      console.log(this.props.places)
-  	 places = this.props.places.currentPlaces.map((place, index) => {
-  		return <PlaceElement {...place} key={index} />
+  	if(this.props.places){
+  	 places = this.props.places.map((place, index) => {
+  		return <PlaceElement {...place} key={index} deletePlace={(e) => {this.props.deletePlaceElement(e)}}/>
   	})};
   	return(
   		<div>
   		<h1>TRAVELOGUE</h1>
 
 		<div className="board">
-			<h2>{State}</h2>
+			<h2>{USState}</h2>
 			
 				{journals}
 			
@@ -49,7 +47,8 @@ class StatePage extends Component {
 
   const MapStateToProps = function(state, ownProps){
     console.log(state)
-	return {journals: state.journal.currentJournals.currentJournals, places: state.place.currentPlaces}
+	return {journals: state.journal.currentJournals, 
+    places: state.place.currentPlaces}
 }
 
 const MapDispatchToProps = function(dispatch){
@@ -57,7 +56,11 @@ const MapDispatchToProps = function(dispatch){
 		getUserJournalsByState(dispatch)
 	}, getUserPlacesByState: () => {
 		getUserPlacesByState(dispatch)
-	}}
+	},deleteJournalElement: (evt) => {
+    deleteJournal(evt.target.getAttribute("data-jid"), dispatch)
+  },deletePlaceElement: (evt) => {
+    deletePlace(evt.target.getAttribute("data-pid"), dispatch)
+  }}
 }
 
 export default connect(MapStateToProps, MapDispatchToProps)(StatePage);

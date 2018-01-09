@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './jelement.css';
 
 export default function JournalElement(props){

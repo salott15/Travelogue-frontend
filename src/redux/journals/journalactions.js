@@ -1,6 +1,8 @@
+import {API_BASE_URL} from '../../config'
+
 export function addJournal(obj,dispatch) {
 	let data = JSON.stringify(obj);
-	return fetch('http://localhost:3001/journals/' + localStorage.getItem("uid"),
+	return fetch(`${API_BASE_URL}/journals/localStorage.getItem("uid")`,
 	{
 		method: "POST",
 		headers: {
@@ -14,14 +16,9 @@ export function addJournal(obj,dispatch) {
 	});
 };
 
-function addJournalComplete(obj){
-	console.log('completed:',obj);
-	return { type: 'ADD_JOURNAL', paylod:obj };
-};
-
 export function getUserJournals(dispatch) {
 	// console.log(obj.username,obj.password,btoa(obj.username+":"+obj.password));
-	return fetch('http://localhost:3001/journals/' + localStorage.getItem("uid"),
+	return fetch(`${API_BASE_URL}/journals/localStorage.getItem("uid")`,
 	{
 		method: "GET",
 		headers: {
@@ -39,7 +36,7 @@ export function getUserJournals(dispatch) {
 
 export function getUserJournalsByState(dispatch) {
 	// console.log(obj.username,obj.password,btoa(obj.username+":"+obj.password));
-	return fetch('http://localhost:3001/journals/' + localStorage.getItem("uid") + "/" + localStorage.getItem("state"),
+	return fetch(`${API_BASE_URL}/journals/localStorage.getItem("uid")/localStorage.getItem("state")`,
 	{
 		method: "GET",
 		headers: {
@@ -50,13 +47,12 @@ export function getUserJournalsByState(dispatch) {
 	.then(obj => {
 		return obj.json()})
 	.then( obj => {
-		console.log(obj)
 			return dispatch({ type: 'GET_JOURNALS_BY_STATE', paylod:obj });
 	});
 };
 
 export function deleteJournal(jid, dispatch) {
-    return fetch('http://localhost:3001/journals/' + jid,
+    return fetch(`${API_BASE_URL}` + jid,
     {
         method: "DELETE",
         headers: {
@@ -64,11 +60,8 @@ export function deleteJournal(jid, dispatch) {
             //"Authorization": "Basic "+btoa(obj.username+":"+obj.password)
         }
     })
-    .then(response => {
-    	console.log(response)
-      return response.json()
-    })
-    .then(data => {
-      return console.log(data)
-    })
+    .then(obj => {
+        console.log(obj);
+            return dispatch({ type: 'DELETE_JOURNAL', paylod:jid });
+    });
 };

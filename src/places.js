@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Link} from 'react-router-dom';
 import './places.css';
 import {getUserPlaces} from './redux/places/placeactions';
 import {getUser} from './redux/users/useractions';
@@ -18,8 +18,8 @@ class Places extends Component {
   render() {
   	var places = []
   	console.log(this.props)
-  	if(this.props.places.currentPlaces){
-  	 places = this.props.places.currentPlaces.map((plc, index) => {
+  	if(this.props.places){
+  	 places = this.props.places.map((plc, index) => {
   		return <PlaceElement {...plc} key={index} deletePlace={(e) => {this.props.deletePlaceElement(e)}} />
 })};
   	return(
@@ -42,6 +42,7 @@ class Places extends Component {
   }
 
 const MapStateToProps = function(state, ownProps){
+	console.log(state)
 	return {places: state.place.currentPlaces,
 		firstname: state.users.loggedIn}
 }
