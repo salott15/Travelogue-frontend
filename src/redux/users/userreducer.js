@@ -8,7 +8,7 @@ function users(state = initialState, action){
 	switch (action.type)
 	{
 		case 'LOGIN_USER' :
-			return {...state, loggedIn: true, name:action.paylod.firstname}
+			return {...state, loggedIn: true, name:action.paylod.username}
 
 		case 'GET_USER' : 
 			return {...state, currentUser: action.paylod}

@@ -15,7 +15,7 @@ class NewJournal extends Component {
   			<h1>TRAVELOGUE</h1>
 
 			<div className="newjournal">
-				<h2>Create a new journal entry!</h2>
+				<h2 className="journaltag">Create a new journal entry!</h2>
 				<div>
 
 					<label>State</label>

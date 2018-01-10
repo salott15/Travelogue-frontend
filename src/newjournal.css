@@ -11,15 +11,15 @@ h1 {
 	text-align: center;
 }
 
-h2 {
+.journaltag{
 	font-family: 'Crete Round', serif;
-	font-size: 35px;
+	font-size: 30px;
 	text-align: center;
 	margin-bottom: 0px;
 }
 
 .newjournal{
-	height:600px;
+	height:300px;
 	width:400px;
 	background-color: white;
 	margin: auto;
@@ -43,7 +43,8 @@ label{
 	font-size: 15px;
 	margin-left: 75px;
 	width:200px;
-	height:250px;
+	border:none;
+  	border-bottom:1px solid #757575;
 }
 
 label, input {

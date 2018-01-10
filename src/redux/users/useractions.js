@@ -46,24 +46,15 @@ export function login(obj,dispatch) {
 		},
 		body: data
 	})
-	.then(obj => {
-		fetch(`${API_BASE_URL}/api/auth/login`,
-		{
-			method: "GET"
-		})
-		.then(res => res.json())
-		.then(obj =>{
-			console.log('OBJOBJ:',obj);
-			localStorage.setItem('token',obj.tkn);
-			localStorage.setItem('uid', obj.uid);
-			return dispatch(loginComplete(obj),dispatch);
-		})
+	.then(response => {
+			localStorage.setItem('token',response.token);
+			return dispatch(loginComplete(response),dispatch);
 	});
 };
 
-function loginComplete(obj){
-	console.log('completed:',obj);
-	return { type: 'LOGIN_USER', paylod:obj };
+function loginComplete(data){
+	console.log('completed:',data);
+	return { type: 'LOGIN_USER', paylod:data };
 }
 
 export function testAuth(dispatch)

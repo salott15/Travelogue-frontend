@@ -37,6 +37,8 @@ input {
 	font-family: 'Raleway', sans-serif;
 	font-size: 15px;
 	margin-left: 75px;
+	border:none;
+  	border-bottom:1px solid #757575;
 }
 
 label, input {
