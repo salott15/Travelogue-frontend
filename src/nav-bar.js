@@ -35,6 +35,7 @@ class NavBar extends React.Component {
 				<div>
 
 					<header className="nav-bar">
+						
 						<p className="title"><Link to="/" style={{textDecoration: 'none', color: "white"}}>TRAVELOGUE</Link></p>
 						<p className="login"><Link to="/login" style={{textDecoration: 'none', color: "white"}}>Login</Link></p>
 						{this.props.loggedIn
