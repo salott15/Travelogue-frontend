@@ -47,3 +47,7 @@ Users can add places from the link in the navigation bar, or by viewing their jo
 
 - Node.js + Express.js
 - mLab 
+
+Link to backend repository on github: <https://github.com/salott15/travelogue-backend.git>
+
+Link to live version of backend: <https://hidden-journey-70493.herokuapp.com/>
