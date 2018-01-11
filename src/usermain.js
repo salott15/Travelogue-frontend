@@ -1,26 +1,12 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import './usermain.css';
 
 import Map from './map.js';
 
 class UserMain extends Component {
-  constructor(props)
-  {
-    super(props);
-    console.log(props);
-    //._root.entries["0"][1].loggedIn
-  }
-  componentDidMount(props)
-  { console.log('new props: ', props); }
-
   render() {
-    console.log('?????',this.props);
-    if(!this.props.usrLoggedIn){
-      // window.location = '/login';
-      return (<div>Not Logged In</div>)
-    }
     return (
     	<div>
     		<h1>TRAVELOGUE</h1>

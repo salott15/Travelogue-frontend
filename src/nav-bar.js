@@ -12,8 +12,24 @@ import UserMain from './usermain';
 import Places from './places.js';
 import NewJournal from './newjournal.js';
 import NewPlace from './newplace.js';
+import { loginComplete } from './redux/users/useractions'
 
-function NavBar(props){
+class NavBar extends React.Component {
+
+	componentDidMount() {
+		const token = localStorage.getItem('token')
+		const email = localStorage.getItem('email')
+
+		if(token) {
+			const data = {
+				token,
+				email
+			}
+			this.props.dispatch(loginComplete(data))
+		}
+	}
+
+	render() {
 		return (
 			<Router>
 				<div>
@@ -21,13 +37,30 @@ function NavBar(props){
 					<header className="nav-bar">
 						<p className="title"><Link to="/" style={{textDecoration: 'none', color: "white"}}>TRAVELOGUE</Link></p>
 						<p className="login"><Link to="/login" style={{textDecoration: 'none', color: "white"}}>Login</Link></p>
+						{this.props.loggedIn
+							?
+							<p className="login">
+								<span
+									onClick={() => {
+										localStorage.removeItem('token')
+										localStorage.removeItem('uid')
+										localStorage.removeItem('email')
+										window.location = "/"
+									}}
+									style={{textDecoration: 'none', color: "white"}
+								}>
+									Logout
+								</span>
+							</p>
+							:
+							""
+						}
 						<p className="mypage"><Link to="/usermain" style={{textDecoration: 'none', color: "white"}}>My Page ||</Link></p>
 						<p className="newjournallink"><Link to="/newjournal" style={{textDecoration: 'none', color: "white"}}>New Journal ||</Link></p>
 						<p className="newplacelink"><Link to="/newplace" style={{textDecoration: 'none', color: "white"}}>New Place ||</Link></p>
 					</header>
 
 					<main>
-						{props.loggedIn ? <Redirect to= "/usermain" /> : ""}
 						<Route exact path="/" component={App} />
 						<Route exact path="/createaccount" component={CreateAccount} />
 						<Route exact path="/journals" component={Journals} />
@@ -40,7 +73,8 @@ function NavBar(props){
 					</main>
 				</div>
 			</Router>
-		);
+		)
+	}
 }
 
 const mapStateToProps = (state) => {

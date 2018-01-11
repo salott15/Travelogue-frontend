@@ -2,7 +2,7 @@ import {API_BASE_URL} from '../../config'
 
 export function addJournal(obj,dispatch) {
 	let data = JSON.stringify(obj);
-	return fetch(`${API_BASE_URL}/journals/localStorage.getItem("uid")`,
+	return fetch(`${API_BASE_URL}/journals/${localStorage.getItem("uid")}`,
 	{
 		method: "POST",
 		headers: {
@@ -11,6 +11,7 @@ export function addJournal(obj,dispatch) {
 		},
 		body: data
 	})
+	// .then(response => console.log(response))
 	.then(obj => {
 			window.location.href="/journals"
 	});
@@ -18,7 +19,7 @@ export function addJournal(obj,dispatch) {
 
 export function getUserJournals(dispatch) {
 	// console.log(obj.username,obj.password,btoa(obj.username+":"+obj.password));
-	return fetch(`${API_BASE_URL}/journals/localStorage.getItem("uid")`,
+	return fetch(`${API_BASE_URL}/journals/${localStorage.getItem("uid")}`,
 	{
 		method: "GET",
 		headers: {
@@ -36,7 +37,7 @@ export function getUserJournals(dispatch) {
 
 export function getUserJournalsByState(dispatch) {
 	// console.log(obj.username,obj.password,btoa(obj.username+":"+obj.password));
-	return fetch(`${API_BASE_URL}/journals/localStorage.getItem("uid")/localStorage.getItem("state")`,
+	return fetch(`${API_BASE_URL}/journals/${localStorage.getItem("uid")}/${localStorage.getItem("state")}`,
 	{
 		method: "GET",
 		headers: {
@@ -52,7 +53,7 @@ export function getUserJournalsByState(dispatch) {
 };
 
 export function deleteJournal(jid, dispatch) {
-    return fetch(`${API_BASE_URL}` + jid,
+    return fetch(`${API_BASE_URL}/journals/${jid}`,
     {
         method: "DELETE",
         headers: {

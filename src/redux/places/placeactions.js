@@ -4,7 +4,7 @@ export function addPlace(obj,dispatch) {
 	let data = JSON.stringify(obj);
 	console.log(data);
 	// console.log(obj.username,obj.password,btoa(obj.username+":"+obj.password));
-	return fetch(`${API_BASE_URL}/localStorage.getItem("uid")`,
+	return fetch(`${API_BASE_URL}/places/${localStorage.getItem("uid")}`,
 	{
 		method: "POST",
 		headers: {
@@ -20,7 +20,7 @@ export function addPlace(obj,dispatch) {
 };
 
 export function getUserPlaces(dispatch) {
-	return fetch(`${API_BASE_URL}/localStorage.getItem("uid")`,
+	return fetch(`${API_BASE_URL}/places/${localStorage.getItem("uid")}`,
 	{
 		method: "GET",
 		headers: {
@@ -40,7 +40,7 @@ function getPlacesComplete(places){
 
 export function getUserPlacesByState(dispatch) {
 	// console.log(obj.username,obj.password,btoa(obj.username+":"+obj.password));
-	return fetch(`${API_BASE_URL}/localStorage.getItem("uid")/localStorage.getItem("state")`,
+	return fetch(`${API_BASE_URL}/places/${localStorage.getItem("uid")}/${localStorage.getItem("state")}`,
 	{
 		method: "GET",
 		headers: {
@@ -55,7 +55,7 @@ export function getUserPlacesByState(dispatch) {
 };
 
 export function deletePlace(pid, dispatch) {
-	return fetch(`${API_BASE_URL}/localStorage.getItem("uid")` + pid,
+	return fetch(`${API_BASE_URL}/places/${pid}`,
 	{
 		method: "DELETE",
 		headers: {
