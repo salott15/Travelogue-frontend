@@ -2,7 +2,6 @@ import {API_BASE_URL} from '../../config'
 
 export function newUser(obj,dispatch) {
 	let data = JSON.stringify(obj);
-	console.log(data);
 	// console.log(obj.username,obj.password,btoa(obj.username+":"+obj.password));
 	return fetch(`${API_BASE_URL}/users`,
 	{
@@ -29,8 +28,8 @@ export function newUser(obj,dispatch) {
 function registerUserError(error){
 	console.log(error)
 	return {
-		type: 'USER_REGISTER_ERROR', 
-		error 
+		type: 'USER_REGISTER_ERROR',
+		error
 	}
 }
 
@@ -46,15 +45,21 @@ export function login(obj,dispatch) {
 		},
 		body: data
 	})
-	.then(response => {
-			localStorage.setItem('token',response.token);
-			return dispatch(loginComplete(response),dispatch);
+	.then(response => response.json())
+	.then(data => {
+		localStorage.setItem('token',data.token);
+		localStorage.setItem('email',data.email);
+		localStorage.setItem('uid',data.id);
+		dispatch(loginComplete(data),dispatch);
+		window.location = "/usermain"
 	});
 };
 
-function loginComplete(data){
-	console.log('completed:',data);
-	return { type: 'LOGIN_USER', paylod:data };
+export function loginComplete(data){
+	return {
+		type: 'LOGIN_USER',
+		paylod:data
+	};
 }
 
 export function testAuth(dispatch)

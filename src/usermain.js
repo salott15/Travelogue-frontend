@@ -6,7 +6,6 @@ import './usermain.css';
 import Map from './map.js';
 
 class UserMain extends Component {
-
   render() {
     return (
         <div>
