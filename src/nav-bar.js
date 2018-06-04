@@ -1,4 +1,4 @@
-import React from 'react';
+ import React from 'react';
 import { Route, Link, Redirect, BrowserRouter as Router } from 'react-router-dom';
 import {connect} from 'react-redux';
 import './nav-bar.css';

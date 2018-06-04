@@ -53,8 +53,8 @@ html, body {
 }
 
 .aboutimg, .featuresimg {
-	height:300px;
-	width: 450px;
+	max-height:300px;
+	max-width: 450px;
 	padding-left: 50px;
 	padding-top: 20px;
 }
