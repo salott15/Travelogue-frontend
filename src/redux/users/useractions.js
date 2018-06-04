@@ -49,7 +49,7 @@ export function login(obj,dispatch) {
 	.then(data => {
 		localStorage.setItem('token',data.token);
 		localStorage.setItem('email',data.email);
-		localStorage.setItem('uid',data.id);
+		localStorage.setItem('uid',data.uid);
 		dispatch(loginComplete(data),dispatch);
 		window.location = "/usermain"
 	});
@@ -79,7 +79,8 @@ export function testAuth(dispatch)
 }
 
 export function getUser(dispatch) {
-	return fetch(`${API_BASE_URL}/users/localStorage.getItem("uid")`,
+	const id = localStorage.getItem("uid");
+	return fetch(`${API_BASE_URL}/users/${id}`,
 	{
 		method: "GET",
 		headers: {
