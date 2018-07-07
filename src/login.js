@@ -6,7 +6,6 @@ import {login, testAuth} from './redux/users/useractions'
 class Login extends React.Component {
 	constructor(props) {
 		super(props);
-		console.log('Props:', props);
 	}
 
   render() {
@@ -21,6 +20,7 @@ class Login extends React.Component {
 				<h1>TRAVELOGUE</h1>
 				<div className="loginform">
 				<h2>Login</h2>
+				<p className="demoAccountInfo">Demo account login: abc@abc.com || password: abc</p>
 				<form onSubmit={this.props.login}>
 					<label>Email</label>
 					<input id="login-email" type="email" name="email"/>
